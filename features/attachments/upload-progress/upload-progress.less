@@ -1,0 +1,31 @@
+// progress
+
+@import url(http://fonts.googleapis.com/css?family=Noto+Sans);
+
+@barColor: #E4E4E5;
+@overlayColor: #fffde8;
+@backColor: #2f3439;
+@progressCircleSize: 35;
+@progressCircleWidth: 25;
+
+
+.progress-radial {
+    width: @progressCircleSize + @progressCircleWidth + 0px;
+    height: @progressCircleSize + @progressCircleWidth + 0px;
+    border-radius: 50%;
+    border: none; // remove gradient color
+    background-color: @barColor; // default 100%
+    .overlay {
+        position: absolute;
+        width: ~"@{progressCircleSize}px";
+        height: ~"@{progressCircleSize}px";
+        background-color: @overlayColor;
+        border-radius: 50%;
+        margin-left: @progressCircleWidth/2 + 0px;
+        margin-top: @progressCircleWidth/2 + 0px;
+        text-align: center;
+        line-height: ~"@{progressCircleSize}px";
+        font-size: 12px;
+        font-family: 'Noto Sans', sans-serif;
+    }
+}

@@ -1,0 +1,75 @@
+@attachment-item-size: 110;
+
+.btn-attachments {
+    .btn;
+    .btn-primary;
+}
+
+.panel-attachments {
+    .panel;
+    margin-top: 5px;
+
+    input {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        width: @attachment-item-size + 0px;
+        opacity: 0;
+        -ms-filter: 'alpha(opacity=0)';
+        direction: ltr;
+        cursor: pointer;
+    }
+
+    .attachment-item {
+        position: relative;
+        display: inline-block;
+        width: @attachment-item-size + 35px;
+        height: @attachment-item-size + 0px;
+        border-radius: 4px;
+        border: 1px solid #cccccc;
+        margin-right: 4px;
+
+        .centered {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            -moz-transform: translateX(-50%) translateY(-50%);
+            -webkit-transform: translateX(-50%) translateY(-50%);
+            transform: translateX(-50%) translateY(-50%);
+        }
+
+        .bottom-centered {
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            -moz-transform: translateX(-50%);
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+        }
+
+        .top-right-cornered {
+            position: absolute;
+            right: 5px;
+            top: 5px;
+        }
+
+        .ellipsis {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: @attachment-item-size + 25px;
+        }
+    }
+
+    .attachment-item:last-child {
+        margin-right: 0;
+        margin-left: -4px;
+    }
+
+    .attachment-item:first-child {
+        margin-left: 0;
+    }
+}
+
