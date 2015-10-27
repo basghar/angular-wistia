@@ -1,6 +1,5 @@
 (function wistiaServiceIIFE() {
 
-    wistiaServiceFactory.$inject = ['$resource', 'wistiaConstants'];
     function wistiaServiceFactory($resource, wistiaConstants) {
 
         var WistiaMedia = $resource(wistiaConstants.dataUrl + '/medias/:mediaHashedId/', {
@@ -24,7 +23,6 @@
         return wistiaService;
     }
 
-    wistiaServiceInterceptorFactory.$inject = ['wistiaConstants'];
     function wistiaServiceInterceptorFactory(wistiaConstants) {
         var jsonExtAppendor = {
             request: function interceptRequest(config) {

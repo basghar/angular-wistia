@@ -1,7 +1,7 @@
 describe('attachmentsDirective', function () {
 
     beforeEach(module('angularWistia'));
-    beforeEach(module('features/header/header-partial.html'));
+    //beforeEach(module('features/header/header-partial.html'));
 
     var elm, scope, compile;
 
@@ -14,8 +14,8 @@ describe('attachmentsDirective', function () {
         elm = angular.element('<div aw-attachments owner-id="{{itemId}}" upload-options="uploadOptions"></div>');
 
         scope = $rootScope;
-        $compile(elm)(scope);
-        scope.$digest();
+        //$compile(elm)(scope);
+        //scope.$digest();
     }));
 
     it('should ...', function () {

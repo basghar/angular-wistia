@@ -5,7 +5,7 @@
         </a>
 
         <div uib-collapse="collapsed" class="panel-attachments">
-            <div class="attachment-item" ng-repeat="a in attachments">
+            <div class="attachment-item" ng-repeat="a in attachments" ng-click="triggerViewer(a)">
                 <i class="fa fa-times top-right-cornered clickable" ng-click="removeAttachment(a);"></i>
                 <span class="bottom-centered ellipsis">{{a.name}}</span>
                 <img ng-src="{{a.thumbnail.url}}" class="centered">

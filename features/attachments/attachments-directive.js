@@ -1,14 +1,14 @@
 (function wistiaAttachmentsDirectiveIIFE() {
     'use strict';
 
-    wistiaAttachmentsDirective.$inject = ['wistiaConstants', 'wistiaService'];
     function wistiaAttachmentsDirective(wistiaConstants, wistiaService) {
 
         return {
             restrict: 'A',
             replace: true,
             scope: {
-                options: '=uploadOptions'
+                options: '=uploadOptions',
+                viewer: '&'
             },
             templateUrl: 'features/attachments/attachments-directive.html',
             link: function ($scope, $element, $attrs) {
@@ -28,6 +28,10 @@
                         ib = progress >= 50 ? 270 : progress * 3.6 + 90;
                     return 'linear-gradient(' + ia + 'deg, ' + iac + ' 50%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0)), ' +
                         'linear-gradient(' + ib + 'deg, #656D74 50%, #E4E4E5 50%, #E4E4E5)';
+                };
+
+                $scope.triggerViewer = function triggerViewer(media) {
+                    $scope.viewer({media:media});
                 };
 
                 $scope.removeAttachment = function removeAttachment(attachment) {

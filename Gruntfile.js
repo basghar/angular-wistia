@@ -93,7 +93,8 @@ module.exports = function (grunt) {
                 files: [
                     {src: ['img/**'], dest: 'dist/'},
                     {src: ['bower_components/font-awesome/fonts/**'], dest: 'dist/', filter: 'isFile', expand: true},
-                    {src: ['bower_components/bootstrap/fonts/**'], dest: 'dist/', filter: 'isFile', expand: true}
+                    {src: ['bower_components/bootstrap/fonts/**'], dest: 'dist/', filter: 'isFile', expand: true},
+                    {src: ['features/**/*.html'], dest: 'dist/', filter: 'isFile', expand: true}
                     //{src: ['bower_components/angular-ui-utils/ui-utils-ieshiv.min.js'], dest: 'dist/'},
                     //{src: ['bower_components/select2/*.png','bower_components/select2/*.gif'], dest:'dist/css/',flatten:true,expand:true},
                     //{src: ['bower_components/angular-mocks/angular-mocks.js'], dest: 'dist/'}
@@ -162,20 +163,6 @@ module.exports = function (grunt) {
                 }
             }
         },
-        //Imagemin has issues on Windows.
-        //To enable imagemin:
-        // - "npm install grunt-contrib-imagemin"
-        // - Comment in this section
-        // - Add the "imagemin" task after the "htmlmin" task in the build task alias
-        // imagemin: {
-        //   main:{
-        //     files: [{
-        //       expand: true, cwd:'dist/',
-        //       src:['**/{*.png,*.jpg}'],
-        //       dest: 'dist/'
-        //     }]
-        //   }
-        // },
         karma: {
             options: {
                 frameworks: ['jasmine'],
