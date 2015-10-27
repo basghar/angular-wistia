@@ -14,5 +14,5 @@
             }
         };
 
-    angular.module('angularWistia').constant('wistiaConstants', wistiaConstants);
+    angular.module('angular-wistia').constant('wistiaConstants', wistiaConstants);
 })();

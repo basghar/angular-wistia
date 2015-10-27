@@ -1,6 +1,6 @@
 describe('HeaderCtrl', function() {
 
-	beforeEach(module('angularWistia'));
+	beforeEach(module('angular-wistia'));
 
 	var scope,ctrl;
 

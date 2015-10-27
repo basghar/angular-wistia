@@ -17,5 +17,5 @@
         };
     }
 
-    angular.module('angularWistia').controller('AttachmentsSamplePageCtrl', attachmentsSamplePageCtrl);
+    angular.module('angular-wistia').controller('AttachmentsSamplePageCtrl', attachmentsSamplePageCtrl);
 })();

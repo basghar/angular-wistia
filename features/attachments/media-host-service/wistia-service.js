@@ -36,7 +36,7 @@
         return jsonExtAppendor;
     }
 
-    angular.module('angularWistia')
+    angular.module('angular-wistia')
         .factory('wistiaService', wistiaServiceFactory)
         .factory('wistiaServiceInterceptor', wistiaServiceInterceptorFactory)
         .config(['$httpProvider', function ($httpProvider) {

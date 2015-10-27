@@ -58,6 +58,6 @@
         };
     }
 
-    angular.module('angularWistia').directive('awAttachments', wistiaAttachmentsDirective);
+    angular.module('angular-wistia').directive('awAttachments', wistiaAttachmentsDirective);
 })();
 

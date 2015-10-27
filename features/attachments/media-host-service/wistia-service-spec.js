@@ -2,7 +2,7 @@ describe('wistia-service', function () {
 
     var $httpBackend, itemId = 'itemId1234';
 
-    beforeEach(module('angularWistia'));
+    beforeEach(module('angular-wistia'));
 
     beforeEach(inject(function ($injector) {
         $httpBackend = $injector.get('$httpBackend');

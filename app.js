@@ -1,7 +1,7 @@
 (function appIIFE(){
     'use strict';
 
-    angular.module('angularWistia', ['ngRoute', 'ngResource', 'ui.bootstrap',
+    angular.module('angular-wistia', ['ngRoute', 'ngResource', 'ui.bootstrap',
         'blueimp.fileupload', 'com.2fdevs.videogular', 'com.2fdevs.videogular.plugins.controls'])
 
         .config(function appConfigure($routeProvider) {

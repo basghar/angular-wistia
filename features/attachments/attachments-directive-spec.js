@@ -1,6 +1,6 @@
 describe('attachmentsDirective', function () {
 
-    beforeEach(module('angularWistia'));
+    beforeEach(module('angular-wistia'));
     //beforeEach(module('features/header/header-partial.html'));
 
     var elm, scope, compile;

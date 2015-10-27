@@ -1,6 +1,6 @@
 describe('playerDirective', function() {
 
-  beforeEach(module('angularWistia'));
+  beforeEach(module('angular-wistia'));
 
   var scope,compile;
 
@@ -11,7 +11,7 @@ describe('playerDirective', function() {
 
   it('should ...', function() {
 
-    /* 
+    /*
     To test your directive, you need to create some html that would use your directive,
     send that through compile() then compare the results.
 

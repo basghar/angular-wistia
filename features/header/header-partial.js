@@ -1,4 +1,4 @@
-angular.module('angularWistia').controller('HeaderCtrl', function () {
+angular.module('angular-wistia').controller('HeaderCtrl', function () {
     'use strict';
 
     // place holder

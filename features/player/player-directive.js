@@ -53,5 +53,5 @@
         };
     }
 
-    angular.module('angularWistia').directive('wistiaPlayer', wistiaPlayerDirective);
+    angular.module('angular-wistia').directive('wistiaPlayer', wistiaPlayerDirective);
 })(window);
