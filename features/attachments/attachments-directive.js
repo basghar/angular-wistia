@@ -35,9 +35,13 @@
                 };
 
                 $scope.removeAttachment = function removeAttachment(attachment) {
-                    attachment.$delete(function onDeleteSuccess() {
-                        attachments.splice(attachments.indexOf(attachment), 1);
-                    });
+                    if(!attachment.$deleting){
+                        attachment.$deleting = true;
+                        attachment.$delete(function onDeleteSuccess() {
+                            delete attachment.$deleting;
+                            attachments.splice(attachments.indexOf(attachment), 1);
+                        });
+                    }
                 };
 
                 $scope.$on('fileuploadadd', function onFileAddedToQueue(e, data) {

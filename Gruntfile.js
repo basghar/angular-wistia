@@ -171,7 +171,7 @@ module.exports = function (grunt) {
                 files: [  //this files data is also updated in the watch handler, if updated change there too
                     '<%= dom_munger.data.appjs %>',
                     'bower_components/angular-mocks/angular-mocks.js',
-                    createFolderGlobs(['*-spec.js', '*.html']),
+                    createFolderGlobs(['*-spec.js', '*.html'])
                 ],
                 ngHtml2JsPreprocessor: {
                     moduleName: 'templates'

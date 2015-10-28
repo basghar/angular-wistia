@@ -6,9 +6,12 @@
 
         <div uib-collapse="collapsed" class="panel-attachments">
             <div class="attachment-item" ng-repeat="a in attachments" ng-click="triggerViewer(a)">
-                <i class="fa fa-times top-right-cornered clickable" ng-click="removeAttachment(a);"></i>
-                <span class="bottom-centered ellipsis">{{a.name}}</span>
-                <img ng-src="{{a.thumbnail.url}}" class="centered">
+                <span class="bottom-centered attachment-label ellipsis">{{a.name}}</span>
+                <i class="fa top-right-cornered clickable action"
+                   ng-class="!a.$deleting ? 'fa-times':'fa-spinner fa-spin'"
+                   ng-click="removeAttachment(a); $event.stopPropagation();"></i>
+                <img ng-src="{{a.thumbnail.url}}" class="centered thumbnail">
+                <i class="fa fa-play-circle fa-3x centered"></i>
             </div>
 
             <div class="attachment-item" ng-repeat="file in queue" file-upload-progress="file.$progress()">

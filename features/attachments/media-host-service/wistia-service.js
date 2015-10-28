@@ -12,7 +12,7 @@
                 },
 
                 getAttachment: function getAttachment(id, success, error) {
-                    return WistiaMedia.get({hashed_id: id}, success, error);
+                    return WistiaMedia.get({mediaHashedId: id}, success, error);
                 },
 
                 getAttachments: function getAttachments(ownerId, success, error) {

@@ -5,9 +5,15 @@
     .btn-primary;
 }
 
+
 .panel-attachments {
     .panel;
     margin-top: 5px;
+
+    .attachment-label {
+        background: rgba(0, 0, 0, .5);
+        color: white;
+    }
 
     input {
         position: absolute;
@@ -30,42 +36,69 @@
         border-radius: 4px;
         border: 1px solid #cccccc;
         margin-right: 4px;
+        overflow: hidden;
 
         .centered {
             position: absolute;
             top: 50%;
             left: 50%;
+            text-align: center;
             -moz-transform: translateX(-50%) translateY(-50%);
             -webkit-transform: translateX(-50%) translateY(-50%);
             transform: translateX(-50%) translateY(-50%);
         }
 
+        .thumbnail {
+            width: 100%;
+        }
+
         .bottom-centered {
             position: absolute;
-            left: 50%;
+            width: 100%;
             bottom: 0;
-            -moz-transform: translateX(-50%);
-            -webkit-transform: translateX(-50%);
-            transform: translateX(-50%);
+            z-index: 100;
+            text-align: center;
         }
 
         .top-right-cornered {
             position: absolute;
-            right: 5px;
-            top: 5px;
+            right: 0;
+            top: 0;
+            z-index: 100;
         }
+
+        .action {
+            display: none;
+            margin: 3px;
+            padding: 5px;
+            color: white;
+            border-radius: 50%;
+            background-color: rgba(135, 2, 0, 0.5);
+            cursor: pointer;
+        }
+
 
         .ellipsis {
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            max-width: @attachment-item-size + 25px;
+            max-width: 100%;
+        }
+
+        .fa-play-circle {
+            opacity: 0.5;
+            cursor: pointer;
+        }
+    }
+
+    .attachment-item:hover {
+        .action {
+            display: block;
         }
     }
 
     .attachment-item:last-child {
         margin-right: 0;
-        margin-left: -4px;
     }
 
     .attachment-item:first-child {

@@ -15,7 +15,7 @@ describe('wistia-service', function () {
     }];
 
 
-    it('should invoke Medias#list with .json appended correctly', inject(function (wistiaService, wistiaConstants) {
+    xit('should invoke Medias#list with .json appended correctly', inject(function (wistiaService, wistiaConstants) {
         var result;
 
         $httpBackend.expectGET(wistiaConstants.dataUrl + '/medias.json?' +
@@ -47,9 +47,8 @@ describe('wistia-service', function () {
 
         //TODO: investigate why search is performed rather than simple resource get request
 
-        $httpBackend.expectGET(wistiaConstants.dataUrl + '/medias.json?' +
-            'api_password=' + wistiaConstants.apiPassword +
-            '&hashed_id=' + mediaHashId)
+        $httpBackend.expectGET(wistiaConstants.dataUrl + '/medias/' + mediaHashId + '.json?' +
+            'api_password=' + wistiaConstants.apiPassword)
             .respond(200, mediaList[0]);
 
         wistiaService.getAttachment(mediaHashId, function onSuccess(attachment) {
