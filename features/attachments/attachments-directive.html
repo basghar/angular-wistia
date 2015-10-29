@@ -4,12 +4,11 @@
             Attachments <i class="fa" ng-class="collapsed?'fa-chevron-right':'fa-chevron-down'"></i>
         </a>
 
-        <div uib-collapse="collapsed" class="panel-attachments">
+        <div ng-hide="collapsed" class="panel-attachments">
             <div class="attachment-item" ng-repeat="a in attachments" ng-click="triggerViewer(a)">
                 <span class="bottom-centered attachment-label ellipsis">{{a.name}}</span>
-                <i class="fa top-right-cornered clickable action"
-                   ng-class="!a.$deleting ? 'fa-times':'fa-spinner fa-spin'"
-                   ng-click="removeAttachment(a); $event.stopPropagation();"></i>
+                <i class="fa fa-times top-right-cornered clickable fa-action-icon action"
+                   aw-async-click="removeAttachment(a);"></i>
                 <img ng-src="{{a.thumbnail.url}}" class="centered thumbnail">
                 <i class="fa fa-play-circle fa-3x centered"></i>
             </div>

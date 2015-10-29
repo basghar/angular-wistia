@@ -15,7 +15,7 @@ describe('wistia-service', function () {
     }];
 
 
-    xit('should invoke Medias#list with .json appended correctly', inject(function (wistiaService, wistiaConstants) {
+    it('should invoke Medias#list with .json appended correctly', inject(function (wistiaService, wistiaConstants) {
         var result;
 
         $httpBackend.expectGET(wistiaConstants.dataUrl + '/medias.json?' +
@@ -55,6 +55,11 @@ describe('wistia-service', function () {
             // need to remove Resource methods for comparison
             result = _.pick(attachment, _.keys(mediaList[0]));
         });
+
+        runs(function () {
+            expect(result).toEqual(mediaList[0]);
+        });
+
 
         $httpBackend.flush();
     }));

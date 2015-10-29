@@ -24,7 +24,7 @@
     }
 
     function wistiaServiceInterceptorFactory(wistiaConstants) {
-        var jsonExtAppendor = {
+        var wistiaInterceptor = {
             request: function interceptRequest(config) {
                 if (config.url.indexOf(wistiaConstants.dataUrl) === 0) {
                     config.url = config.url + '.json';
@@ -33,7 +33,7 @@
             }
         };
 
-        return jsonExtAppendor;
+        return wistiaInterceptor;
     }
 
     angular.module('angular-wistia')
