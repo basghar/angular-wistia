@@ -13,3 +13,6 @@ where
   * `owner-id`: Unique id of arbitrary business object which may have concept of video being associated as attachments
   * `viewer`: expression to invoke any javascript function. media object is avaialble as locals for injection (for reference see http://wistia.com/doc/data-api#medias).
   * `upload-options`: upload options of jquery file upload plugin (for reference see https://github.com/blueimp/jQuery-File-Upload/wiki/Options) 
+
+### Demo 
+http://basghar.github.io/angular-wistia/
