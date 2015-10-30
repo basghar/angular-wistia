@@ -5,7 +5,7 @@
         return {
             restrict: 'A',
             link: function (scope, element, attrs) {
-                var clickFn = $parse(attrs['awAsyncClick']),
+                var clickFn = $parse(attrs.awAsyncClick),
                     iconElement = angular.element('i.fa-action-icon'),
                     progressStyleClasses = (attrs.progressClass || 'fa-spinner') + ' fa-spin fa-disabled';
 

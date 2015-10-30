@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('angular-wistia', ['ngRoute', 'ngResource', 'ui.bootstrap',
-        'blueimp.fileupload', 'com.2fdevs.videogular', 'com.2fdevs.videogular.plugins.controls'])
+        'blueimp.fileupload'])
 
         .config(function appConfigure($routeProvider) {
             $routeProvider.when('/attachments-sample', {templateUrl: 'features/attachments/sample-page/sample-page.html'});

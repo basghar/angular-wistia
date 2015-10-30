@@ -29,7 +29,7 @@
 
         // Following event is dispatched by jquery file upload directive
         $rootScope.$on('fileuploaddone', function onFileUploadDone(e, data) {
-            var newAttachment = new wistiaService.createResource(data.result);
+            var newAttachment = wistiaService.createResource(data.result);
             attachments.push(newAttachment);
             // remove files entries from jquery upload queue
             data.scope.clear(data.files);
