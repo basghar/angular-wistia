@@ -1,5 +1,8 @@
 <div class="modal-header">
     <h3 class="modal-title">{{media.name}}</h3>
+    <button type="button" class="close" aria-label="Close" ng-click="$close()">
+        <span aria-hidden="true">&times;</span>
+    </button>
 </div>
 <div class="modal-body">
     <div wistia-player src-hashed-id="media.hashed_id" class="wistia-player"></div>

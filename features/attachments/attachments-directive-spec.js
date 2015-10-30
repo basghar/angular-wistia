@@ -1,3 +1,5 @@
+//TODO: isolate directive tests from directive, but as of now directive is nothing much to test
+
 describe('attachmentsDirective', function () {
 
     beforeEach(module('angular-wistia'));

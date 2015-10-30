@@ -1,5 +1,6 @@
 (function attachmentsSamplePageIIFE() {
 
+    //TODO: convert to 'controller as'
     function attachmentsSamplePageCtrl($scope, $uibModal, wistiaConstants) {
         // we are using wistia project id as item id to filter the media to retrieve media only related to given item.
         $scope.itemId = 'dw51s64qz7';

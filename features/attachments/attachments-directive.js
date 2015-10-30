@@ -1,6 +1,7 @@
 (function wistiaAttachmentsDirectiveIIFE() {
     'use strict';
 
+    //TODO: convert to 'controller as'
     function createAttachmentsController($scope, $rootScope, wistiaConstants, wistiaService) {
         var attachments;
 
@@ -48,9 +49,10 @@
                 viewer: '&'
             },
             templateUrl: 'features/attachments/attachments-directive.html',
-            controller: 'AWAttachmentsDirectiveCtrl',
+            controller: 'AWAttachmentsDirectiveCtrl', // injection to allow testing of controller in isolation from directive (if needed)
             link: function ($scope) {
                 $scope.getRadialProgressStyle = function getRadialProgressStyle(progress) {
+                    //TODO: move this to a separate directive.
                     //TODO: this is quick workaround, need to come up with some better way.
                     var ia = progress < 50 ? 90 : progress * 3.6 - 270,
                         iac = progress < 50 ? '#E4E4E5' : '#656D74',

@@ -1,5 +1,6 @@
 (function wistiaConstantsIIFE() {
 
+    // For demo only: The config such as one with api key/pwd should be fetched from secure http server
     var API_PWD = '5eae1a573f04f76d8d66049a3c7ae9b4cbfc8710dfaf440b252e6abcde77dd7b',
         wistiaConstants = {
             apiPassword: API_PWD,

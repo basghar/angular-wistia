@@ -1,6 +1,6 @@
 (function wistiaServiceIIFE() {
 
-    function wistiaServiceFactory($resource, wistiaConstants) {
+    function createWistiaService($resource, wistiaConstants) {
 
         var WistiaMedia = $resource(wistiaConstants.dataUrl + '/medias/:mediaHashedId/', {
                 mediaHashedId: '@hashed_id',
@@ -23,7 +23,7 @@
         return wistiaService;
     }
 
-    function wistiaServiceInterceptorFactory(wistiaConstants) {
+    function createWistiaServiceInterceptor(wistiaConstants) {
         var wistiaInterceptor = {
             request: function interceptRequest(config) {
                 if (config.url.indexOf(wistiaConstants.dataUrl) === 0) {
@@ -37,8 +37,8 @@
     }
 
     angular.module('angular-wistia')
-        .factory('wistiaService', wistiaServiceFactory)
-        .factory('wistiaServiceInterceptor', wistiaServiceInterceptorFactory)
+        .factory('wistiaService', createWistiaService)
+        .factory('wistiaServiceInterceptor', createWistiaServiceInterceptor)
         .config(['$httpProvider', function ($httpProvider) {
             $httpProvider.interceptors.push('wistiaServiceInterceptor');
         }]);

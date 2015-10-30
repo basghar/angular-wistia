@@ -45,8 +45,6 @@ describe('wistia-service', function () {
         var result,
             mediaHashId = mediaList[0].hashed_id;
 
-        //TODO: investigate why search is performed rather than simple resource get request
-
         $httpBackend.expectGET(wistiaConstants.dataUrl + '/medias/' + mediaHashId + '.json?' +
             'api_password=' + wistiaConstants.apiPassword)
             .respond(200, mediaList[0]);

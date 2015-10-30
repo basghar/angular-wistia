@@ -5,6 +5,9 @@
         </a>
 
         <div ng-hide="collapsed" class="panel-attachments">
+
+            <!-- TODO: following can be separate directive to display single attachment -->
+
             <div class="attachment-item" ng-repeat="a in attachments" ng-click="triggerViewer(a)">
                 <span class="bottom-centered attachment-label ellipsis">{{a.name}}</span>
                 <i class="fa fa-times top-right-cornered clickable fa-action-icon action"
@@ -15,9 +18,7 @@
 
             <div class="attachment-item" ng-repeat="file in queue" file-upload-progress="file.$progress()">
                 <span class="bottom-centered ellipsis">{{file.name}}</span>
-                <div class="progress-radial centered" ng-style="{'background-image': getRadialProgressStyle(num)}">
-                    <div class="overlay">{{num}}%</div>
-                </div>
+                <div awUploadProgress progress='num' class="centered"></div>
             </div>
 
             <div class="attachment-item">
