@@ -1,23 +1,24 @@
-describe('awAsyncClick', function() {
+describe('awAsyncClick', function () {
 
-  beforeEach(module('angular-wistia'));
+    beforeEach(module('angular-wistia'));
 
-  var scope,compile;
+    var scope, compile;
 
-  beforeEach(inject(function($rootScope,$compile) {
-    scope = $rootScope.$new();
-    compile = $compile;
-  }));
+    beforeEach(inject(function ($rootScope, $compile) {
+        scope = $rootScope.$new();
+        compile = $compile;
+    }));
 
-  it('should ...', function() {
+    //TODO: write unit tests for this directive
+    it('should ...', function () {
 
-    /* 
-    To test your directive, you need to create some html that would use your directive,
-    send that through compile() then compare the results.
+        /*
+         To test your directive, you need to create some html that would use your directive,
+         send that through compile() then compare the results.
 
-    var element = compile('<div mydirective name="name">hi</div>')(scope);
-    expect(element.text()).toBe('hello, world');
-    */
+         var element = compile('<div mydirective name="name">hi</div>')(scope);
+         expect(element.text()).toBe('hello, world');
+         */
 
-  });
+    });
 });

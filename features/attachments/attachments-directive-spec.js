@@ -1,11 +1,11 @@
-//TODO: isolate directive tests from directive, but as of now directive is nothing much to test
+//TODO: isolate directive controller tests from directive, but as of now directive has nothing much to test
 
 describe('attachmentsDirective', function () {
 
     beforeEach(module('angular-wistia'));
     beforeEach(module('templates'));
 
-    var elm, scope, rootScope, compile, _wistiaService, mediaList;
+    var elm, scope, rootScope, _wistiaService, mediaList;
 
     function createResourceList(mediaList, wistiaService){
         var resourceList = [];
@@ -21,9 +21,8 @@ describe('attachmentsDirective', function () {
         scope.itemId = 'test_id';
         scope.uploadOptions = wistiaConstants.uploadOptions;
 
-        compile = $compile;
         elm = angular.element('<div aw-attachments owner-id="{{itemId}}" ' +
-            'viewer="showVideoPlayer(media) "upload-options="uploadOptions"></div>');
+            'viewer="showVideoPlayer(media)" upload-options="uploadOptions"></div>');
 
         $compile(elm)(scope);
         _wistiaService = wistiaService;

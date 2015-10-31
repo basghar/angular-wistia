@@ -7,7 +7,7 @@
                 api_password: wistiaConstants.apiPassword
             }),
             wistiaService = {
-                createResource: function (attachment){
+                createResource: function (attachment) {
                     return new WistiaMedia(attachment);
                 },
 
@@ -36,7 +36,32 @@
         return wistiaInterceptor;
     }
 
+
+
+    function provideWistiaAPIObject($window, $q) {
+        var wistiaPromise;
+
+        if (!$window.Wistia) {
+            wistiaPromise = $q.defer().promise;
+            $window.wistiaInit = function onWistiaAsyncInit(Wistia) {
+                wistiaPromise.resolve(Wistia);
+                delete $window.wistiaInit;
+            };
+        } else {
+            wistiaPromise = $q.when($window.Wistia);
+        }
+
+        return wistiaPromise.then(function disableWistiaDOMWatch(Wistia){
+            // TODO: Wistia claims to use mutation observers to initialize player element but for some reason it wasn't working
+            // Initially attempted to change class but it didn't pick up, then started removing and adding the whole element.
+            // Even that didn't work until started using Wistia.embeds.setup(). For the time being disabling mutation observers.
+            Wistia.embeds.dontWatch();
+            return Wistia;
+        });
+    }
+
     angular.module('angular-wistia')
+        .factory('WistiaAPI', provideWistiaAPIObject) // Wistia api object placed on global ns by wistia js script
         .factory('wistiaService', createWistiaService)
         .factory('wistiaServiceInterceptor', createWistiaServiceInterceptor)
         .config(['$httpProvider', function ($httpProvider) {

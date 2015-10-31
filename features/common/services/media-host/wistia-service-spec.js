@@ -1,6 +1,14 @@
 describe('wistia-service', function () {
 
-    var $httpBackend, itemId = 'itemId1234';
+    var $httpBackend,
+        wistiaService,
+        wistiaConstants,
+        itemId = 'itemId1234',
+        mediaList = [{
+            id: 1,
+            name: "dummy.jpg",
+            hashed_id: 'shitty_hash1'
+        }];
 
     beforeEach(module('angular-wistia'));
 
@@ -8,16 +16,13 @@ describe('wistia-service', function () {
         $httpBackend = $injector.get('$httpBackend');
     }));
 
-    var mediaList = [{
-        id: 1,
-        name: "dummy.jpg",
-        hashed_id: 'shitty_hash1'
-    }];
+    beforeEach(inject(function (_wistiaService_, _wistiaConstants_) {
+        wistiaService = _wistiaService_;
+        wistiaConstants =_wistiaConstants_;
+    }));
 
 
-    it('should invoke Medias#list with .json appended correctly', inject(function (wistiaService, wistiaConstants) {
-        var result;
-
+    it('should invoke Medias#list with .json appended correctly', function () {
         $httpBackend.expectGET(wistiaConstants.dataUrl + '/medias.json?' +
             'api_password=' + wistiaConstants.apiPassword +
             '&project_id=' + itemId)
@@ -25,25 +30,17 @@ describe('wistia-service', function () {
 
         wistiaService.getAttachments(itemId, function onSuccess(attachments) {
             // need to remove Resource methods for comparison
-            result = _.map(attachments, function (a) {
+            var result = _.map(attachments, function (a) {
                 return _.pick(a, _.keys(mediaList[0]));
             });
-        });
-
-        waitsFor(function () {
-            return result;
-        });
-
-        runs(function () {
             expect(result).toEqual(mediaList);
         });
 
         $httpBackend.flush();
-    }));
+    });
 
-    it('should invoke Medias#show with .json appended correctly', inject(function (wistiaService, wistiaConstants) {
-        var result,
-            mediaHashId = mediaList[0].hashed_id;
+    it('should invoke Medias#show with .json appended correctly', function () {
+        var mediaHashId = mediaList[0].hashed_id;
 
         $httpBackend.expectGET(wistiaConstants.dataUrl + '/medias/' + mediaHashId + '.json?' +
             'api_password=' + wistiaConstants.apiPassword)
@@ -51,16 +48,12 @@ describe('wistia-service', function () {
 
         wistiaService.getAttachment(mediaHashId, function onSuccess(attachment) {
             // need to remove Resource methods for comparison
-            result = _.pick(attachment, _.keys(mediaList[0]));
-        });
-
-        runs(function () {
+            var result = _.pick(attachment, _.keys(mediaList[0]));
             expect(result).toEqual(mediaList[0]);
         });
 
-
         $httpBackend.flush();
-    }));
+    });
 
     afterEach(function () {
         $httpBackend.verifyNoOutstandingExpectation();

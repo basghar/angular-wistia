@@ -9,9 +9,9 @@ describe('AttachmentsSamplePageCtrl', function () {
         ctrl = $controller('AttachmentsSamplePageCtrl', {$scope: scope});
     }));
 
-    it('should initialize correctly', inject(function () {
+    it('should initialize correctly', function () {
         expect(scope.itemId).toBeDefined();
         expect(scope.uploadOptions).toBeDefined();
-    }));
+    });
 
 });

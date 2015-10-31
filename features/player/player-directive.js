@@ -1,57 +1,60 @@
-(function wistiaPlayerDirectiveIIFE(globalNS) {
+(function wistiaPlayerDirectiveIIFE() {
     'use strict';
 
-    var Wistia;
+    function createWistiaPlayerDirective(WistiaAPI) {
 
-    globalNS.wistiaInit = function onWistiaInit(W) {
-        Wistia = W;
-        Wistia.embeds.dontWatch();
-    };
-
-    function removeEmbed(parent, hashedId) {
-        var video = Wistia.api(hashedId);
-        if (video) {
-            video.remove();
+        function getWistiaAsyncClassName(hashedId) {
+            return 'wistia_async_' + hashedId;
         }
-        parent.empty();
-    }
 
-    function wistiaPlayerDirective() {
+        function removeEmbed(Wistia, hashedId, container) {
+            var video = Wistia.api(hashedId),
+                wistiaEmbedElement = container.find('.' + getWistiaAsyncClassName(hashedId));
+
+            if (video) {
+                video.remove();
+            }
+            wistiaEmbedElement.remove();
+        }
 
         return {
             restrict: 'A',
             scope: {
                 srcHashedId: '='
             },
-            link: function (scope, element) {
+            link: function (scope, element, attrs) {
                 scope.$watch('srcHashedId', function (srcHashedId, oldHash) {
-                    var wistiaEmbed;
+                    WistiaAPI.then(function initializeEmbed(Wistia) {
+                        var wistiaEmbedElement;
 
-                    if (srcHashedId) {
-
-                        if (oldHash) {
-                            removeEmbed(element, oldHash);
+                        if (oldHash && oldHash !== srcHashedId) {
+                            removeEmbed(Wistia, oldHash, element);
                         }
 
-                        wistiaEmbed = angular.element(
-                            '<div class="wistia_embed wistia_async_' + srcHashedId + '"></div>'
-                        );
+                        if (srcHashedId) {
+                            wistiaEmbedElement = angular.element(
+                                '<div class="wistia_embed ' + getWistiaAsyncClassName(srcHashedId)+ '"></div>'
+                            );
 
-                        element.append(wistiaEmbed);
-
-                        Wistia.embeds.setup();
-                        Wistia.api(srcHashedId).play();
-                    }
+                            element.append(wistiaEmbedElement);
+                            Wistia.embeds.setup();
+                            if(scope.$eval(attrs.autoPlay) === true){
+                                Wistia.api(srcHashedId).play();
+                            }
+                        }
+                    });
                 });
 
                 scope.$on('$destroy', function cleanUp() {
                     if (scope.srcHashedId) {
-                        removeEmbed(element, scope.srcHashedId);
+                        WistiaAPI.then(function cleanUpEmbed(Wistia) {
+                            removeEmbed(Wistia, scope.srcHashedId, element);
+                        });
                     }
                 });
             }
         };
     }
 
-    angular.module('angular-wistia').directive('wistiaPlayer', wistiaPlayerDirective);
-})(window);
+    angular.module('angular-wistia').directive('wistiaPlayer', createWistiaPlayerDirective);
+})();

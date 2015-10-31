@@ -23,10 +23,10 @@
         return {
             replace: true,
             scope: {
-                progress: '='
+                progress: '=awProgress'
                 //TODO: create params for style colors
             },
-            templateUrl: 'directive/upload-progress-directive/upload-progress-directive.html',
+            templateUrl: 'features/common/directives/round-progress/upload-progress-directive.html',
             controller: 'UploadProgressDirectiveCtrl',
             controllerAs: 'vm', //viewModel
             bindToController: true

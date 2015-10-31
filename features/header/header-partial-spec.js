@@ -9,7 +9,7 @@ describe('HeaderCtrl', function() {
       ctrl = $controller('HeaderCtrl', {$scope: scope});
     }));
 
-	xit('should do ....', inject(function() {
-	}));
+	it('should do ....', function() {
+	});
 
 });
