@@ -11,9 +11,25 @@
     <link type="text/css" rel="stylesheet" href="dest/plugin/app.min.css">
     <link type="text/css" rel="stylesheet" href="dest/plugin/default-plugins.min.css">
 
-    <title>Plugin Test page -temp</title>
+    <title>Plugin Test page</title>
 
     <style>
+
+        body {
+            overflow: auto;
+        }
+
+        .btn-xs {
+            padding: 1px 5px;
+            font-size: 12px;
+            line-height: 1.5;
+            border-radius: 3px;
+        }
+
+        .baa-full-page-plugin {
+            overflow: auto;
+        }
+
         .full-page-plugin-header {
             margin-top: 20px;
         }
@@ -26,21 +42,40 @@
 
         .full-page-plugin-body h1 {
             font-weight: 400;
-            margin-top: 77px;
+            margin-top: 75px;
             margin-bottom: 34px;
         }
 
-        .full-page-plugin-body form > div{
+        .full-page-plugin-body form > div {
             display: block;
             padding-left: 40px;
             padding-right: 40px;
             background-color: white;
+            overflow: auto;
+        }
+
+        .full-page-plugin-body form > div:last-child {
+            background-color: transparent;
         }
 
         .baa-plugin-form-filter {
-            padding-top: 34px;
-            padding-bottom: 31px;
+            padding-top: 43px;
+            padding-bottom: 37px;
             margin-bottom: 1px;
+        }
+
+        .baa-plugin-form-filter .hint {
+            font-size: 10px;
+        }
+
+        .baa-plugin-form-help p {
+            margin: 35px 0 18px 0;
+            letter-spacing: -0.27px;
+            line-height: 22px;
+        }
+
+        .baa-plugin-form-body {
+            padding: 18px 0 24px;
         }
 
         .full-page-plugin-body form label {
@@ -50,22 +85,95 @@
 
         .full-page-plugin-body form .form-control {
             height: 20px;
+            padding: 1px 3px;
+            font-size: 11px;
+            font-family: "Open Sans", sans-serif;
         }
 
+        /*-------------------------------------------------------------------*/
+        /*-------------------------------------------------------------------*/
+
+        .baa-tree,
+        .baa-tree ul,
+        .baa-tree li {
+            position: relative;
+        }
+
+        .baa-tree ul {
+            list-style: none;
+        }
+
+        .baa-tree > li li {
+            padding-left: 80px;
+            padding-top: 40px;
+        }
+/*
+
+        ul.baa-tree-leaf > li {
+            padding-top: 20px;
+        }
+*/
+
+        .baa-tree li > div {
+            border: solid 1px #c0c0c1;
+            padding: 15px 15px;
+            font-size: 16px;
+        }
+
+        .baa-tree > li li::before,
+        .baa-tree > li li::after {
+            content: "";
+            position: absolute;
+            left: 40px;
+        }
+
+        .baa-tree > li li::before {
+            border: solid 1px #c0c0c1;
+            top: 63px;
+            width: 40px;
+            height: 0;
+        }
+
+        .baa-tree > li li::after {
+            border: solid 1px #c0c0c1;
+            height: 100%;
+            width: 0;
+            top: 0;
+        }
+
+        .baa-tree ul > li:last-child::after {
+            height: 63px;
+        }
+
+        .baa-tree-toolbar {
+            float: right;
+        }
+
+        .baa-tree-toolbar > .icon {
+            margin-left: 20px;
+        }
+
+        .baa-tree-toolbar .icon-toggle-on {
+            color: #70a83c;
+        }
+
+        .baa-tree-toolbar .icon-toggle-off {
+            color: #afafb0;
+        }
+
+        /*-------------------------------------------------------------------*/
+        /*-------------------------------------------------------------------*/
+
         @media (min-width: 768px) {
-
-            .full-page-plugin-header {
-            }
-
             .full-page-plugin-body {
-                width: 806px;
+                width: 800px;
             }
 
         }
 
         @media (min-width: 1200px) {
             .full-page-plugin-body {
-                width: 806px;
+                width: 800px;
             }
         }
 
@@ -73,34 +181,133 @@
 
 </head>
 <body>
+<div class="baa-full-page-plugin-container">
+    <div class="baa-full-page-plugin">
+        <p class="text-left left-margin full-page-plugin-header">
+            <a>
+                <i class="icon icon-left-circled"></i> Back
+            </a>
+        </p>
 
-<div class="baa-full-page-plugin">
-    <p class="text-left left-margin full-page-plugin-header">
-        <a href="javascript:void(0)" ng-click="close()">
-            <i class="icon icon-left-circled"></i> Back
-        </a>
-    </p>
-    <div class="full-page-plugin-body">
-        <h1>Display</h1>
-        <form class="form-inline">
-            <div class="baa-plugin-form-filter">
-                <div class="form-group">
-                    <label>Primary Form</label>
-                    <select class="form-control">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
+        <div class="full-page-plugin-body">
+            <h1>Display</h1>
+
+            <form class="form-inline">
+                <div class="baa-plugin-form-filter">
+                    <div class="form-group">
+                        <label>Primary Form</label>
+                        <select class="form-control">
+                            <option>Applications</option>
+                        </select>
+                    </div>
+                    <span class="hint">
+                        This is the top-level form that will be displayed externally. Subforms can be included.
+                    </span>
                 </div>
-            </div>
-            <div class="baa-plugin-form-help">
-                Test
-            </div>
-            <div class="baa-plugin-form-body"></div>
-            <div class="baa-plugin-form-action"></div>
-        </form>
+                <div class="baa-plugin-form-help">
+                    <p>
+                        You can choose to display data from one or more forms each time someone views a record. You can
+                        see the primary form below as well as all related forms. You can select which forms you want to
+                        display in the portal by turning them on, and which fields to display within each one. You can
+                        also drag and drop the related forms to change their order. <a>Learn more about display data</a>.
+                    </p>
+                </div>
+                <div class="baa-plugin-form-body">
+                    <ul class="baa-tree">
+                        <li>
+                            <div>
+                                Applications
+                                    <span class="baa-tree-toolbar">
+                                        <i class="icon icon-toggle-on"></i>
+                                        <span class="icon btn btn-xs btn-default">
+                                            <i class="icon icon-cog"></i>
+                                        </span>
+                                    </span>
+                            </div>
+                            <ul>
+                                <li>
+                                    <div>
+                                        Profile
+                                            <span class="baa-tree-toolbar">
+                                                <i class="icon icon-move"></i>
+                                                <i class="icon icon-toggle-on"></i>
+                                                <span class="icon btn btn-xs btn-default">
+                                                    <i class="icon icon-cog"></i>
+                                                </span>
+                                            </span>
+                                    </div>
+                                    <ul class="baa-tree-leaf">
+                                        <li>
+                                            <div>
+                                                Education
+                                                    <span class="baa-tree-toolbar">
+                                                        <i class="icon icon-move"></i>
+                                                        <i class="icon icon-toggle-on"></i>
+                                                        <span class="icon btn btn-xs btn-default">
+                                                            <i class="icon icon-cog"></i>
+                                                        </span>
+                                                    </span>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div>
+                                                Work History
+                                                    <span class="baa-tree-toolbar">
+                                                        <i class="icon icon-move"></i>
+                                                        <i class="icon icon-toggle-on"></i>
+                                                        <span class="icon btn btn-xs btn-default">
+                                                            <i class="icon icon-cog"></i>
+                                                        </span>
+                                                    </span>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <div>
+                                        Questions 1
+                                            <span class="baa-tree-toolbar">
+                                                <i class="icon icon-move"></i>
+                                                <i class="icon icon-toggle-on"></i>
+                                                <span class="icon btn btn-xs btn-default">
+                                                    <i class="icon icon-cog"></i>
+                                                </span>
+                                            </span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        Questions 2
+                                            <span class="baa-tree-toolbar">
+                                                <i class="icon icon-move"></i>
+                                                <i class="icon icon-toggle-on"></i>
+                                                <span class="icon btn btn-xs btn-default">
+                                                    <i class="icon icon-cog"></i>
+                                                </span>
+                                            </span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        Questions 3
+                                            <span class="baa-tree-toolbar">
+                                                <i class="icon icon-move"></i>
+                                                <i class="icon icon-toggle-on"></i>
+                                                <span class="icon btn btn-xs btn-default">
+                                                    <i class="icon icon-cog"></i>
+                                                </span>
+                                            </span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div class="baa-plugin-form-action">
+                    <button class="btn btn-primary">Save all setttings</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
