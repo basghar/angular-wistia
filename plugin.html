@@ -19,16 +19,17 @@
             overflow: auto;
         }
 
+        /*bootstrap fixes**************************************************************/
+
         .btn-xs {
             padding: 1px 5px;
             font-size: 12px;
             line-height: 1.5;
             border-radius: 3px;
         }
+        /******************************************************************************/
 
-        .baa-full-page-plugin {
-            overflow: auto;
-        }
+        /*main plugin *****************************************************************/
 
         .full-page-plugin-header {
             margin-top: 20px;
@@ -58,6 +59,21 @@
             background-color: transparent;
         }
 
+        .full-page-plugin-body form label {
+            font-weight: 300;
+            margin-right: 10px;
+        }
+
+        .full-page-plugin-body form .form-control {
+            height: 20px;
+            padding: 1px 3px;
+            font-size: 11px;
+            font-family: "Open Sans", sans-serif;
+        }
+
+        /******************************************************************************/
+
+        /*plugin form******************************************************************/
         .baa-plugin-form-filter {
             padding-top: 43px;
             padding-bottom: 37px;
@@ -76,18 +92,6 @@
 
         .baa-plugin-form-body {
             padding: 18px 0 24px;
-        }
-
-        .full-page-plugin-body form label {
-            font-weight: 300;
-            margin-right: 10px;
-        }
-
-        .full-page-plugin-body form .form-control {
-            height: 20px;
-            padding: 1px 3px;
-            font-size: 11px;
-            font-family: "Open Sans", sans-serif;
         }
 
         /*-------------------------------------------------------------------*/
@@ -169,12 +173,6 @@
                 width: 800px;
             }
 
-        }
-
-        @media (min-width: 1200px) {
-            .full-page-plugin-body {
-                width: 800px;
-            }
         }
 
     </style>
