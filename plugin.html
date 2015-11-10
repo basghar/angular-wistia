@@ -19,6 +19,14 @@
             overflow: auto;
         }
 
+        /**
+         * Plugin test-plugin CSS
+         *
+         * NOTES:
+         * I presume there would be generic patterns for full-page-plugin and plugin-forms but couldn't find them
+         * (probably missed them) so a lot of css can go into generic patterns from following.
+         */
+
         /*bootstrap fixes**************************************************************/
 
         .btn-xs {
@@ -41,12 +49,6 @@
             margin-top: 15px;
         }
 
-        .full-page-plugin-body h1 {
-            font-weight: 400;
-            margin-top: 75px;
-            margin-bottom: 34px;
-        }
-
         .full-page-plugin-body form > div {
             display: block;
             padding-left: 40px;
@@ -57,6 +59,17 @@
 
         .full-page-plugin-body form > div:last-child {
             background-color: transparent;
+            padding: 20px;
+        }
+
+        /******************************************************************************/
+
+        /*plugin body******************************************************************/
+
+        .full-page-plugin-body h1 {
+            font-weight: 400;
+            margin-top: 75px;
+            margin-bottom: 34px;
         }
 
         .full-page-plugin-body form label {
@@ -66,7 +79,7 @@
 
         .full-page-plugin-body form .form-control {
             height: 20px;
-            padding: 1px 3px;
+            padding: 1px 3px; /*FIXME: use form-control-xs instead, which is not working*/
             font-size: 11px;
             font-family: "Open Sans", sans-serif;
         }
@@ -91,11 +104,11 @@
         }
 
         .baa-plugin-form-body {
-            padding: 18px 0 24px;
+            padding: 18px 0 40px;
         }
+        /******************************************************************************/
 
-        /*-------------------------------------------------------------------*/
-        /*-------------------------------------------------------------------*/
+        /*tree ************************************************************************/
 
         .baa-tree,
         .baa-tree ul,
@@ -111,12 +124,19 @@
             padding-left: 80px;
             padding-top: 40px;
         }
-/*
 
-        ul.baa-tree-leaf > li {
-            padding-top: 20px;
-        }
-*/
+        /*
+            YUK!!!! we need SASS/LESS support.
+         */
+
+        /*
+            Removed because Natalie said need not to worry about different margins of tree nodes at level 2 (Education
+            and Work History)
+
+            ul.baa-tree-leaf > li {
+                padding-top: 20px;
+            }
+        */
 
         .baa-tree li > div {
             border: solid 1px #c0c0c1;
@@ -149,6 +169,10 @@
             height: 63px;
         }
 
+        /******************************************************************************/
+
+        /*tree node toolbar************************************************************/
+
         .baa-tree-toolbar {
             float: right;
         }
@@ -165,8 +189,56 @@
             color: #afafb0;
         }
 
-        /*-------------------------------------------------------------------*/
-        /*-------------------------------------------------------------------*/
+        /******************************************************************************/
+
+        /*TODO: complete responsive rules**********************************************/
+        @media (max-width: 767px) { /*For smaller screens, just make things smaller */
+
+            .full-page-plugin-body h1 {
+                font-weight: 300;
+                margin-top: 20px;
+                margin-bottom: 18px;
+            }
+
+            .baa-plugin-form-filter {
+                padding-top: 18px;
+                padding-bottom: 18px;
+            }
+
+            .baa-plugin-form-help p {
+                font-size: 13px;
+                margin: 18px 0;
+                line-height: 18px;
+            }
+
+            .baa-tree li > div {
+                padding: 10px 10px;
+                font-size: 13px;
+            }
+
+            .baa-tree > li li {
+                padding-left: 40px;
+                padding-top: 20px;
+            }
+
+            .baa-tree > li li::before,
+            .baa-tree > li li::after {
+                left: 20px;
+            }
+
+            .baa-tree > li li::before {
+                width: 20px;
+                top: 36px;
+            }
+
+            .baa-tree ul > li:last-child::after {
+                height: 36px;
+            }
+
+            .baa-tree-toolbar > .icon {
+                margin-left: 10px;
+            }
+        }
 
         @media (min-width: 768px) {
             .full-page-plugin-body {
@@ -174,6 +246,8 @@
             }
 
         }
+
+        /******************************************************************************/
 
     </style>
 
