@@ -1,18 +1,20 @@
 describe('playerDirective', function () {
 
-    var elm, scope,
+    var elm, scope, wistiaApiMock,
         media = {
             id: 1,
             name: "dummy.jpg",
             hashed_id: 'shitty_hash1'
-        },
+        };
+
+    beforeEach(module('angular-wistia', function($provide){
+        //TODO: what the heck? mocking promise :(
+
         wistiaApiMock = {
             api: jasmine.createSpy('api'),
             embeds: jasmine.createSpyObj('embeds', ['setup'])
         };
 
-    beforeEach(module('angular-wistia', function($provide){
-        //TODO: what the heck? mocking promise :(
         $provide.value('WistiaAPI', {
             then: function(cb){
                 cb(wistiaApiMock);
@@ -36,24 +38,21 @@ describe('playerDirective', function () {
     });
 
     it('should remove media embed container and get wistia to cleanup', function () {
-        var mediaMock = jasmine.createSpyObj('media', ['remove']);
+        var wistiaPlayerMock = jasmine.createSpyObj('media', ['remove']);
 
-        wistiaApiMock.api.and.returnValue(mediaMock);
+        wistiaApiMock.api.and.returnValue(wistiaPlayerMock);
         delete scope.media;
         scope.$digest();
         expect(elm.find('.wistia_async_' + media.hashed_id).length).toBe(0);
-        expect(mediaMock.remove).toHaveBeenCalled();
+        expect(wistiaPlayerMock.remove).toHaveBeenCalled();
     });
 
     it('should replace media embed container', function () {
-        var oldHashId = media.hashed_id,
-            mediaMock = jasmine.createSpyObj('media', ['remove']);
+        var wistiaPlayerMock = jasmine.createSpyObj('media', ['replaceWith']);
 
-        wistiaApiMock.api.and.returnValue(mediaMock);
+        wistiaApiMock.api.and.returnValue(wistiaPlayerMock);
         media.hashed_id = 'oh-another-shitty-hash';
         scope.$digest();
-        expect(elm.find('.wistia_async_' + oldHashId).length).toBe(0);
-        expect(elm.find('.wistia_async_' + media.hashed_id).length).toBe(1);
-        expect(mediaMock.remove).toHaveBeenCalled();
+        expect(wistiaPlayerMock.replaceWith).toHaveBeenCalled();
     });
 });

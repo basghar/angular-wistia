@@ -7,14 +7,26 @@
             return 'wistia_async_' + hashedId;
         }
 
-        function removeEmbed(Wistia, hashedId, container) {
-            var video = Wistia.api(hashedId),
-                wistiaEmbedElement = container.find('.' + getWistiaAsyncClassName(hashedId));
+        function removeEmbed(Wistia, containerElement, hashedId, wistiaPlayer) {
+            var wistiaEmbedElement = containerElement.find('.' + getWistiaAsyncClassName(hashedId));
 
-            if (video) {
-                video.remove();
+            wistiaPlayer = wistiaPlayer || Wistia.api(hashedId);
+
+            if (wistiaPlayer) {
+                wistiaPlayer.remove();
             }
             wistiaEmbedElement.remove();
+        }
+
+        function addEmbed(Wistia, containerElement, hashedId) {
+            var wistiaEmbedElement = angular.element(
+                '<div class="wistia_embed ' + getWistiaAsyncClassName(hashedId) + '"></div>'
+            );
+
+            containerElement.append(wistiaEmbedElement);
+
+            Wistia.embeds.setup();
+            return Wistia.api(hashedId);
         }
 
         return {
@@ -25,22 +37,24 @@
             link: function (scope, element, attrs) {
                 scope.$watch('srcHashedId', function (srcHashedId, oldHash) {
                     WistiaAPI.then(function initializeEmbed(Wistia) {
-                        var wistiaEmbedElement;
+                        var wistiaPlayer;
 
-                        if (oldHash && oldHash !== srcHashedId) {
-                            removeEmbed(Wistia, oldHash, element);
+                        if (oldHash) {
+                            wistiaPlayer = Wistia.api(oldHash);
                         }
 
                         if (srcHashedId) {
-                            wistiaEmbedElement = angular.element(
-                                '<div class="wistia_embed ' + getWistiaAsyncClassName(srcHashedId)+ '"></div>'
-                            );
-
-                            element.append(wistiaEmbedElement);
-                            Wistia.embeds.setup();
-                            if(scope.$eval(attrs.autoPlay) === true){
-                                Wistia.api(srcHashedId).play();
+                            if (wistiaPlayer) {
+                                wistiaPlayer.replaceWith(srcHashedId);
+                            } else {
+                                wistiaPlayer = addEmbed(Wistia, element, srcHashedId);
                             }
+
+                            if (scope.$eval(attrs.autoPlay) === true) {
+                                wistiaPlayer.play();
+                            }
+                        } else {
+                            removeEmbed(Wistia, element, oldHash, wistiaPlayer);
                         }
                     });
                 });
@@ -48,7 +62,7 @@
                 scope.$on('$destroy', function cleanUp() {
                     if (scope.srcHashedId) {
                         WistiaAPI.then(function cleanUpEmbed(Wistia) {
-                            removeEmbed(Wistia, scope.srcHashedId, element);
+                            removeEmbed(Wistia, element, scope.srcHashedId);
                         });
                     }
                 });
