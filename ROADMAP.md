@@ -6,8 +6,8 @@ Currently it's structured like an app, need to change it to library structure. M
 |- demo -- directory containing demo app
 |- dist -- directory containing pre-built version of library
 |- src  -- directory containing source code
-        |- directives -- directory containing wistia directives
-        |- services   -- directory containing wistia services
+    |- directives -- directory containing wistia directives
+    |- services   -- directory containing wistia services
 |- test -- directory containing unit tests
 ```
 2. Use wistia- as standard prefix for any directives and allow them to be used as tag name
@@ -20,9 +20,9 @@ Currently it's structured like an app, need to change it to library structure. M
 I would suggest to divide them in two parts.
 
     -- functions on player object which are basically getter setters will be separated. An tag attribute on the directive such as state-object will expose following attributes.
-    >
+    ```
     aspect --               _readOnly_
-    duration --             _readOnly_
+    duration --             _readOnly_ 
     email --                _readWrite_
     embedded --             _readOnly_ //Note: hasEmbedded callback should be an event, need to discuss
     hasData --              _readOnly_ //Note: hasData callback should be an event, need to discuss
@@ -39,7 +39,8 @@ I would suggest to divide them in two parts.
     videoWidth --           _readWrite_
     volume --               _readWrite_
     width --                _readWrite_
-
+    ```
+    
     Changing the _readOnly_ property of state object on the scope will have no effect but changing _readWrite_ property will call relevant function on player object.
 
     -- Rest of the functions will be available thru getPlayer(hashedId) function of wistiaPlayers service (See roadmap item #6).
@@ -90,27 +91,28 @@ To do this an attribute options will be provided that will read an options objec
 6. **Create Angular services using angular $resource for REST API**
 
     #### wistiaAPI *service following function*
-    >
-    **getPlayer(hashedId)** -- *function to retrieve player object*
-
+    ```
+    getPlayer(hashedId) -- function to retrieve player object
+    ```
+    
     The player object returned will be the wistia player object itself
 
     #### wistiaData *service with following properties or functions*
     will support paging and sorting.
-    >
-    **Projects** -- *angular resource object for* https://api.wistia.com/v1/projects.json
-    **ProjectSharings** -- *angular resource object for* https://api.wistia.com/v1/projects/:id/sharings.json
-    **Medias** -- *angular resource object for* https://api.wistia.com/v1/projects/:id/medias.json
-    **getAccountInfo** -- *function to retrieve account information from* https://api.wistia.com/v1/account.json
-    **Customizations** -- *angular resource object for* https://api.wistia.com/v1/medias/:id/customizations.json
-    **Captions** -- *angular resource object for* https://api.wistia.com/v1/medias/:hashedId/captions.json
-
+    ```
+    Projects        -- angular resource object for https://api.wistia.com/v1/projects.json
+    ProjectSharings -- angular resource object for https://api.wistia.com/v1/projects/:id/sharings.json
+    Medias          -- angular resource object for https://api.wistia.com/v1/projects/:id/medias.json
+    getAccountInfo  -- function to retrieve account information from https://api.wistia.com/v1/account.json
+    Customizations  -- angular resource object for https://api.wistia.com/v1/medias/:id/customizations.json
+    Captions        -- angular resource object for https://api.wistia.com/v1/medias/:hashedId/captions.json
+    ```
     #### wistiaStats *service following functions*
-    >
-    **getAccountStats** -- *function to retrieve stats for account from* https://api.wistia.com/v1/stats/account.json
-    **getProjectStats(projectId)** -- *function to retrieve stats for project from* https://api.wistia.com/v1/stats/projects/:id.json
-    **getMediaStats(mediaId)** -- *function to retrieve stats for media from* https://api.wistia.com/v1/stats/medias/:id.json
-    **getVisitorStats** -- *function to retrieve stats for visitors from* https://api.wistia.com/v1/stats/visitors.json
-    **getEventsStats** -- *function to retrieve stats for events from* https://api.wistia.com/v1/stats/events.json
-
+    ```
+    getAccountStats        -- function to retrieve accountStats from* https://api.wistia.com/v1/stats/account.json
+    getProjectStats(projectId) -- function to retrieve projectStats from https://api.wistia.com/v1/stats/projects/:id.json
+    getMediaStats(mediaId) -- function to retrieve mediaStats from https://api.wistia.com/v1/stats/medias/:id.json
+    getVisitorStats        -- function to retrieve visitorsStats from https://api.wistia.com/v1/stats/visitors.json
+    getEventsStats         -- function to retrieve eventsStats from https://api.wistia.com/v1/stats/events.json
+    ```
 
