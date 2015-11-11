@@ -33,3 +33,7 @@ http://basghar.github.io/angular-wistia/
 Right now todos are embedded in the source code. And I want to force myself to use some automated way to generate todos.md
 
 https://github.com/Bartvds/grunt-todos seems a good start.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/basghar/angular-wistia/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
