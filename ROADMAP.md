@@ -2,19 +2,20 @@
 
 1. **Change directory organization**
 Currently it's structured like an app, need to change it to library structure. Moreover separate library module from demo app module.
-```
-|- demo -- directory containing demo app
-|- dist -- directory containing pre-built version of library
-|- src  -- directory containing source code
-    |- directives -- directory containing wistia directives
-    |- services   -- directory containing wistia services
-|- test -- directory containing unit tests
-```
+
+    ```
+    |- demo -- directory containing demo app
+    |- dist -- directory containing pre-built version of library
+    |- src  -- directory containing source code
+        |- directives -- directory containing wistia directives
+        |- services   -- directory containing wistia services
+    |- test -- directory containing unit tests
+    ```
 2. Use wistia- as standard prefix for any directives and allow them to be used as tag name
-```html
-<wistia-player hashed-id="media.hashed_id">
-</wistia-player>
-```
+    ```html
+    <wistia-player hashed-id="media.hashed_id">
+    </wistia-player>
+    ```
 
 3. **Add support for player JS api using wistia-player directive**
 I would suggest to divide them in two parts.
