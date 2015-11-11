@@ -11,13 +11,13 @@ Currently it's structured like an app, need to change it to library structure. M
         |- services   -- directory containing wistia services
     |- test -- directory containing unit tests
     ```
-2. Use wistia- as standard prefix for any directives and allow them to be used as tag name
+2. **Use wistia- as standard prefix** for any directives and allow them to be used as **tag name**.
     ```html
     <wistia-player hashed-id="media.hashed_id">
     </wistia-player>
     ```
 
-3. **Add support for player JS api using wistia-player directive**
+3. **Add support for player JS api** thru wistia-player directive.
 I would suggest to divide them in two parts.
 
     -- functions on player object which are basically getter setters will be separated. An tag attribute on the directive such as state-object will expose following attributes.
@@ -60,7 +60,7 @@ I would suggest to divide them in two parts.
     ```
 
 
-4. Add support for events to wistia-player directive.
+4. **Add support for events** to wistia-player directive.
     - either by tag attributes like on-pause, on-play. It will support expression evaluating to a function call on controller.
     - or by single enable-events attribute that will take array and will dispatch events on scope.
 
@@ -79,7 +79,7 @@ I would suggest to divide them in two parts.
     </wistia-player>
     ```
 
-5. Add support for all options specified at http://wistia.com/doc/player-api#options to wistia-player directive.
+5. **Add support for all options** specified at http://wistia.com/doc/player-api#options to wistia-player directive.
 To do this an attribute options will be provided that will read an options object from the scope.
 
     ```html
@@ -89,7 +89,7 @@ To do this an attribute options will be provided that will read an options objec
     </wistia-player>
     ```
 
-6. **Create Angular services using angular $resource for REST API**
+6. **Create following Angular services** using angular $resource for REST API.
 
     #### wistiaAPI *service following function*
     ```
