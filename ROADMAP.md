@@ -20,7 +20,7 @@ Currently it's structured like an app, need to change it to library structure. M
 3. **Add support for player JS api** thru wistia-player directive.
 I would suggest to divide them in two parts.
 
-    -- functions on player object which are basically getter setters will be separated. An tag attribute on the directive such as state-object will expose following attributes.
+    -- functions on player object which are basically getter setters will be separated. A tag attribute on the directive such as "_state-object_" will expose following attributes.
     ```
     aspect --               _readOnly_
     duration --             _readOnly_ 
@@ -61,8 +61,8 @@ I would suggest to divide them in two parts.
 
 
 4. **Add support for events** to wistia-player directive.
-    - either by tag attributes like on-pause, on-play. It will support expression evaluating to a function call on controller.
-    - or by single enable-events attribute that will take array and will dispatch events on scope.
+    - either by tag attributes like "_on-pause_", "_on-play_". It will support expression evaluating to a function call on controller.
+    - or by single "_enable-events_" attribute that will take array and will dispatch events on scope.
 
     ```html
     <wistia-player
@@ -80,7 +80,7 @@ I would suggest to divide them in two parts.
     ```
 
 5. **Add support for all options** specified at http://wistia.com/doc/player-api#options to wistia-player directive.
-To do this an attribute options will be provided that will read an options object from the scope.
+To do this an attribute "_options_" will be provided that will read an options object from the scope.
 
     ```html
     <wistia-player
