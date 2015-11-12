@@ -2,21 +2,39 @@
 
     function createWistiaService($resource, wistiaConstants) {
 
-        var WistiaMedia = $resource(wistiaConstants.dataUrl + '/medias/:mediaHashedId/', {
+        var listParams = {
+                page: 1,
+                per_page: 10,
+                sort_direction: 1
+            },
+            MediaResource = $resource(wistiaConstants.dataUrl + '/medias/:mediaHashedId/', {
                 mediaHashedId: '@hashed_id',
                 api_password: wistiaConstants.apiPassword
+            }, {
+                query: {
+                    method: 'GET',
+                    isArray: true,
+                    params: listParams
+                },
+                save: {method: 'PUT'},
+                copy: {method: 'POST'},
+                stats: {
+                    method: 'GET',
+                    url: wistiaConstants.dataUrl + '/medias/:mediaHashedId/stats'
+                }
             }),
             wistiaService = {
+                MediaResource: MediaResource,
                 createResource: function (attachment) {
-                    return new WistiaMedia(attachment);
+                    return new MediaResource(attachment);
                 },
 
                 getAttachment: function getAttachment(id, success, error) {
-                    return WistiaMedia.get({mediaHashedId: id}, success, error);
+                    return MediaResource.get({mediaHashedId: id}, success, error);
                 },
 
                 getAttachments: function getAttachments(ownerId, success, error) {
-                    return WistiaMedia.query({project_id: ownerId}, success, error);
+                    return MediaResource.query({project_id: ownerId}, success, error);
                 }
             };
 
@@ -37,7 +55,6 @@
     }
 
 
-
     function provideWistiaAPIObject($window, $q) {
         var wistiaPromise;
 
@@ -51,7 +68,7 @@
             wistiaPromise = $q.when($window.Wistia);
         }
 
-        return wistiaPromise.then(function disableWistiaDOMWatch(Wistia){
+        return wistiaPromise.then(function disableWistiaDOMWatch(Wistia) {
             // TODO: Wistia claims to use mutation observers to initialize player element but for some reason it wasn't working
             // Initially attempted to change class but it didn't pick up, then started removing and adding the whole element.
             // Even that didn't work until started using Wistia.embeds.setup(). For the time being disabling mutation observers.

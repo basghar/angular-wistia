@@ -25,7 +25,9 @@ describe('wistia-service', function () {
     it('should invoke Medias#list with .json appended correctly', function () {
         $httpBackend.expectGET(wistiaConstants.dataUrl + '/medias.json?' +
             'api_password=' + wistiaConstants.apiPassword +
-            '&project_id=' + itemId)
+            '&page=1&per_page=10' +
+            '&project_id=' + itemId +
+            '&sort_direction=1')
             .respond(200, mediaList);
 
         wistiaService.getAttachments(itemId, function onSuccess(attachments) {
@@ -54,6 +56,32 @@ describe('wistia-service', function () {
 
         $httpBackend.flush();
     });
+
+    it('should invoke Medias#update and #delete', function () {
+        var mediaHashId = mediaList[0].hashed_id;
+
+        $httpBackend.expectGET(wistiaConstants.dataUrl + '/medias/' + mediaHashId + '.json?' +
+            'api_password=' + wistiaConstants.apiPassword)
+            .respond(200, mediaList[0]);
+
+        $httpBackend.expectPUT(wistiaConstants.dataUrl + '/medias/' + mediaHashId + '.json?' +
+            'api_password=' + wistiaConstants.apiPassword)
+            .respond(200, mediaList[0]);
+
+        $httpBackend.expectDELETE(wistiaConstants.dataUrl + '/medias/' + mediaHashId + '.json?' +
+            'api_password=' + wistiaConstants.apiPassword)
+            .respond(200);
+
+        wistiaService.MediaResource.get({mediaHashedId: mediaHashId}, function onSuccess(media) {
+            media.$save();
+            media.$delete();
+        });
+
+
+
+        $httpBackend.flush();
+    });
+
 
     afterEach(function () {
         $httpBackend.verifyNoOutstandingExpectation();
