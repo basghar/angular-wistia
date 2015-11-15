@@ -1,0 +1,19 @@
+{
+  "name": "angular-wistia-pages",
+  "version": "0.0.1",
+  "description": "Angular-Wistia documentation and demos",
+  "keywords": "client-side, browser, material, material-design, design, angular, wistia, css",
+  "homepage": "https://basghar.github.org/angular-wistia",
+  "bugs": "https://github.com/basghar/angular-wistia/issues",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/basghar/angular-wistia.git"
+  },
+  "devDependencies": {
+    "http-server": "latest"
+  },
+  "scripts": {
+    "serve": "http-server -p 9001 ./"
+  }
+}

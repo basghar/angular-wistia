@@ -1,0 +1,48 @@
+body {
+    font-family: Roboto,'Helvetica Neue',sans-serif;
+}
+
+.site-sidenav,
+.site-sidenav.md-locked-open-add-active,
+.site-sidenav.md-locked-open {
+    width: 256px;
+    min-width: 256px;
+    max-width: 256px;
+}
+
+.docs-logo {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*padding: 0 0 16px;*/
+    margin: 0 auto;
+}
+.docs-logo:focus {
+    outline: none;
+}
+.docs-logo > img {
+    margin-top: 25px;
+    width: auto;
+    display: block;
+}
+.nav-header {
+    background-color: #106CC8;
+    background: linear-gradient(#185694, #106cc8);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #185694), color-stop(1, #106cc8));
+    background: -webkit-linear-gradient(top, #185694 0%, #106cc8 100%);
+    background: -moz-linear-gradient(top, #185694 0%, #106cc8 100%);
+    background: linear-gradient(top, #185694 0%, #106cc8 100%);
+    border-bottom: 1px solid #267ED5;
+    flex-shrink: 0;
+    z-index: 2;
+}
+a.docs-logo {
+    border-bottom: none;
+}
+.docs-logotype {
+    color: white;
+    text-align: center;
+    font-weight: 400;
+    font-size: 26px;
+}
