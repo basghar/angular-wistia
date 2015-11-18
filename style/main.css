@@ -2,6 +2,10 @@ body {
     font-family: Roboto,'Helvetica Neue',sans-serif;
 }
 
+a {
+    text-decoration: none;
+}
+
 .site-sidenav,
 .site-sidenav.md-locked-open-add-active,
 .site-sidenav.md-locked-open {
@@ -15,7 +19,6 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /*padding: 0 0 16px;*/
     margin: 0 auto;
 }
 .docs-logo:focus {
@@ -26,6 +29,17 @@ body {
     width: auto;
     display: block;
 }
+
+a.docs-logo {
+    border-bottom: none;
+}
+.docs-logotype {
+    color: white;
+    text-align: center;
+    font-weight: 400;
+    font-size: 26px;
+}
+
 .nav-header {
     background-color: #106CC8;
     background: linear-gradient(#185694, #106cc8);
@@ -37,12 +51,9 @@ body {
     flex-shrink: 0;
     z-index: 2;
 }
-a.docs-logo {
-    border-bottom: none;
-}
-.docs-logotype {
-    color: white;
-    text-align: center;
-    font-weight: 400;
-    font-size: 26px;
+
+.site-content-toolbar {
+    background: #f6f6f6 !important;
+    color: #202020 !important;
+    z-index: 3;
 }
