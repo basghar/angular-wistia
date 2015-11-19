@@ -10,9 +10,9 @@
     <link rel="stylesheet" href="style/main.css">
 </head>
 
-<body layout="row" ng-cloak ng-app="angular-wistia-pages">
+<body layout="row" ng-cloak ng-app="angular-wistia-pages" ng-controller="MainCtrl as vm">
 
-<md-sidenav class="md-sidenav-left site-sidenav" flex md-is-locked-open="$mdMedia('gt-sm')">
+<md-sidenav class="md-sidenav-left site-sidenav" md-component-id="left" flex md-is-locked-open="$mdMedia('gt-sm')">
     <header class="nav-header">
         <a ng-href="/" class="docs-logo">
             <img src="img/angular-wistia.png">
@@ -20,12 +20,33 @@
             <h1 class="md-heading docs-logotype">angular-wistia</h1>
         </a>
     </header>
+
+    <md-content flex role="navigation">
+        <ul class="docs-menu">
+            <li ng-repeat="section in menu.sections" class="parent-list-item {{section.className || ''}}" ng-class="{'parentActive' : isSectionSelected(section)}">
+                <h2 class="menu-heading md-subhead" ng-if="section.type === 'heading'" id="heading_{{ section.name}}">
+                    {{section.name}}
+                </h2>
+                <menu-link section="section" ng-if="section.type === 'link'"></menu-link>
+
+                <menu-toggle section="section" ng-if="section.type === 'toggle'"></menu-toggle>
+
+                <ul ng-if="section.children" class="menu-nested-list">
+                    <li ng-repeat="child in section.children" ng-class="{'childActive' : isSectionSelected(child)}">
+                        <menu-link section="child" ng-if="child.type === 'link'"></menu-link>
+
+                        <menu-toggle section="child" ng-if="child.type === 'toggle'"></menu-toggle>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </md-content>
 </md-sidenav>
 
 <div layout="column" flex>
     <md-toolbar class="site-content-toolbar">
         <div class="md-toolbar-tools">
-            <md-button class="md-icon-button" hide-gt-sm aria-label="Toggle Menu">
+            <md-button class="md-icon-button" hide-gt-sm aria-label="Toggle Menu" ng-click="vm.openMenu()">
                 <md-icon md-font-icon="fa-bars" class="fa" style="color:#0013A2;"></md-icon>
             </md-button>
             <h2 class="md-toolbar-item">Wistia <span hide-md hide-sm>directives and services </span>for Angular</h2>
@@ -121,7 +142,8 @@
 <!-- Angular Material Javascript now available via Google CDN; version 0.11.2 used here -->
 <script src="https://ajax.googleapis.com/ajax/libs/angular_material/0.11.2/angular-material.min.js"></script>
 
-<script src="js/app.js"></script>
+<script src="js/main.module.js"></script>
+<script src="js/main.controller.js"></script>
 
 </body>
 </html>
