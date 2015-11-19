@@ -9,6 +9,7 @@ a {
 .site-sidenav,
 .site-sidenav.md-locked-open-add-active,
 .site-sidenav.md-locked-open {
+    background-color: #106CC8;
     width: 256px;
     min-width: 256px;
     max-width: 256px;
@@ -20,24 +21,23 @@ a {
     flex-direction: column;
     align-items: center;
     margin: 0 auto;
+    border-bottom: none;
 }
+
 .docs-logo:focus {
     outline: none;
 }
-.docs-logo > img {
-    margin-top: 25px;
-    width: auto;
-    display: block;
+
+.docs-logo img {
+    margin-top: 28px;
+    width: 150px;
 }
 
-a.docs-logo {
-    border-bottom: none;
-}
 .docs-logotype {
     color: white;
     text-align: center;
     font-weight: 400;
-    font-size: 26px;
+    font-size: 28px;
 }
 
 .nav-header {
@@ -47,13 +47,19 @@ a.docs-logo {
     background: -webkit-linear-gradient(top, #185694 0%, #106cc8 100%);
     background: -moz-linear-gradient(top, #185694 0%, #106cc8 100%);
     background: linear-gradient(top, #185694 0%, #106cc8 100%);
-    border-bottom: 1px solid #267ED5;
+    border-bottom: solid 1px rgba(26, 50, 179, 0);
+    padding-bottom: 6px;
     flex-shrink: 0;
     z-index: 2;
 }
 
 .site-content-toolbar {
-    background: #f6f6f6 !important;
+    background: #E8E8E8 !important;
     color: #202020 !important;
     z-index: 3;
+    border-bottom: 1px solid #BFBFBF;
+}
+
+.md-icon-button .fa{
+    font-size: 22px;
 }

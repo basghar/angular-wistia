@@ -15,9 +15,9 @@
 <md-sidenav class="md-sidenav-left site-sidenav" flex md-is-locked-open="$mdMedia('gt-sm')">
     <header class="nav-header">
         <a ng-href="/" class="docs-logo">
-            <img src="img/angular-wistia.png" alt=""/>
+            <img src="img/angular-wistia.png">
 
-            <h1 class="md-heading docs-logotype">Angular Wistia</h1>
+            <h1 class="md-heading docs-logotype">angular-wistia</h1>
         </a>
     </header>
 </md-sidenav>
@@ -25,12 +25,14 @@
 <div layout="column" flex>
     <md-toolbar class="site-content-toolbar">
         <div class="md-toolbar-tools">
-            <h2 class="md-toolbar-item">Heading</h2>
+            <md-button class="md-icon-button" hide-gt-sm aria-label="Toggle Menu">
+                <md-icon md-font-icon="fa-bars" class="fa" style="color:#0013A2;"></md-icon>
+            </md-button>
+            <h2 class="md-toolbar-item">Wistia <span hide-md hide-sm>directives and services </span>for Angular</h2>
             <span flex></span>
             <div class="md-toolbar-item" layout="row">
                 <md-button class="md-icon-button"
                            aria-label="Install with Bower"
-                           ng-if="!currentComponent.docs.length"
                            target="_blank"
                            ng-href="https://github.com/angular/bower-material">
                     <md-tooltip md-autohide>Install with Bower</md-tooltip>
@@ -38,18 +40,17 @@
                 </md-button>
                 <md-button class="md-icon-button"
                            aria-label="Install with NPM"
-                           ng-if="!currentComponent.docs.length"
                            target="_blank"
-                           ng-href="https://www.npmjs.com/package/angular-material">
+                           ng-href="https://www.npmjs.com/package/angular-wistia">
                     <md-tooltip md-autohide>Install with NPM</md-tooltip>
-                    <md-icon md-svg-src="img/icons/npm-logo.svg" style="transform: scale(1.3)"></md-icon>
+                    <md-icon md-svg-src="img/icons/npm-logo.svg" style="transform: scale(1.6)"></md-icon>
                 </md-button>
                 <md-button class="md-icon-button"
                            aria-label="View Source on Github"
                            target="_blank"
                            ng-href="{{BUILDCONFIG.repository}}/{{menu.version.current.github}}">
                     <md-tooltip md-autohide>View Github</md-tooltip>
-                    <md-icon md-font-icon="fa-github" class="fa"></md-icon>
+                    <md-icon md-svg-src="img/icons/github-icon.svg" style="color: black"></md-icon>
                 </md-button>
             </div>
         </div>
