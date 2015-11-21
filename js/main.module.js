@@ -22,13 +22,17 @@
 
     angular
         .module('angular-wistia-pages', ['ngMaterial', 'ngRoute', 'ngResource'])
-        .controller('TestCtrl', function () {
-            console.log('?????????????????????????????????????????');
-        })
         .config(function ($routeProvider, $locationProvider, SECTIONS) {
             //$locationProvider.html5Mode(true);
 
             findLinkAndAddRoute(SECTIONS, $routeProvider);
+            $routeProvider
+                .when('/introduction', {
+                    templateUrl: 'partials/introduction.tmpl.html'
+                })
+                .otherwise({
+                    redirectTo: '/introduction'
+                })
         })
         .constant('SECTIONS', [{
             name: 'API Reference',
