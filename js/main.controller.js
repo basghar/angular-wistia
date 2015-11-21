@@ -1,7 +1,7 @@
 (function iife() {
     'use strict';
 
-    function MainController($scope, $timeout, $mdSidenav) {
+    function MainController($scope, $timeout, $mdSidenav, SECTIONS) {
         var menu = {},
             vm = this;
 
@@ -23,43 +23,17 @@
             menu.toggleSelectSection(section);
         };
 
-        menu.sections = [{
-            name: 'API Reference',
-            type: 'heading',
-            children: [{
-                name: 'Directives',
-                type: 'toggle',
-                pages: [{
-                    name: 'wistia-player',
-                    id: 'wistiaPlayer',
-                    url: 'directives/player'
-                }, {
-                    name: 'wistia-media',
-                    id: 'wistiaMedia',
-                    url: 'directives/media'
-                }]
-            }, {
-                name: 'Services',
-                type: 'toggle',
-                pages: [{
-                    name: 'wistiaData',
-                    id: 'wistiaData',
-                    url: 'services/data'
-                }, {
-                    name: 'wistiaStats',
-                    id: 'wistiaStats',
-                    url: 'services/stats'
-                }]
-            }]
-        }];
-
         angular.extend(menu, {
+            sections: SECTIONS,
+
             selectSection: function (section) {
                 self.openedSection = section;
             },
+
             toggleSelectSection: function (section) {
                 self.openedSection = (self.openedSection === section ? null : section);
             },
+
             isSectionSelected: function (section) {
                 return self.openedSection === section;
             },
@@ -68,6 +42,7 @@
                 self.currentSection = section;
                 self.currentPage = page;
             },
+
             isPageSelected: function (page) {
                 return self.currentPage === page;
             }

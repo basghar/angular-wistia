@@ -113,6 +113,14 @@ docs-menu, .docs-menu ul {
     width: 100%;
 }
 
+.docs-menu .menu-toggle-list a.md-button {
+    display: block;
+    padding: 0 16px 0 32px;
+    text-transform: none;
+    text-rendering: optimizeLegibility;
+    font-weight: 500;
+}
+
 .md-button-toggle .md-toggle-icon {
     display: block;
     margin-left: auto;
