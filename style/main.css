@@ -160,3 +160,12 @@ a {
     -o-transition: border-bottom 0.35s;
     transition: border-bottom 0.35s;
 }
+
+.disclaimer{
+    color: #b5b5b5;
+}
+
+.disclaimer strong {
+    border-bottom: 1px dotted #b1b1b1;
+    text-decoration: none;
+}
