@@ -6,6 +6,11 @@ a {
     text-decoration: none;
 }
 
+ul {
+     margin: 0;
+     padding: 0;
+}
+
 .site-sidenav,
 .site-sidenav.md-locked-open-add-active,
 .site-sidenav md-content,
@@ -64,4 +69,61 @@ a {
 
 .md-icon-button .fa{
     font-size: 22px;
+}
+
+.docs-menu .md-button:hover,
+.docs-menu .md-button:focus {
+    background: #267ED5 !important;
+}
+.docs-menu .md-button md-icon {
+    color: white;
+}
+
+.menu-heading {
+    display: block;
+    line-height: 32px;
+    margin: 0;
+    padding: 8px 16px 0;
+    text-align: left;
+    width: 100%;
+    color: rgba(255, 255, 255, 0.54);
+}
+
+docs-menu, .docs-menu ul {
+    list-style: none;
+    padding: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.docs-menu .md-button {
+    border-radius: 0;
+    color: white;
+    cursor: pointer;
+    display: block;
+    align-items: inherit;
+    line-height: 40px;
+    margin: 0;
+    max-height: 40px;
+    overflow: hidden;
+    padding: 0px 16px;
+    text-align: left;
+    text-decoration: none;
+    white-space: normal;
+    width: 100%;
+}
+
+.md-button-toggle .md-toggle-icon {
+    display: block;
+    margin-left: auto;
+    speak: none;
+    vertical-align: middle;
+    transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    transition: transform 0.3s ease-in-out;
+    -webkit-transition: -webkit-transform 0.3s ease-in-out;
+}
+.md-button-toggle .md-toggle-icon.toggled {
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
 }
