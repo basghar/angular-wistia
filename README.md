@@ -29,6 +29,10 @@ where
 ### Demo
 http://basghar.github.io/angular-wistia/
 
+### Documentation (work in progress)
+http://basghar.github.io/angular-wistia/main.html
+
+
 ### TO-DOs
 Right now todos are embedded in the source code. And I want to force myself to use some automated way to generate todos.md
 
