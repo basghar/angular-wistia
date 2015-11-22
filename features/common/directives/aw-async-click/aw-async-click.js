@@ -1,7 +1,7 @@
 (function awAttachmentsControllerIIFE() {
     'use strict';
 
-    angular.module('angular-wistia').directive('awAsyncClick', function ($parse) {
+    angular.module('angular-wistia-app').directive('awAsyncClick', function ($parse) {
         return {
             restrict: 'A',
             link: function (scope, element, attrs) {

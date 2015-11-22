@@ -1,8 +1,8 @@
 (function appIIFE(){
     'use strict';
 
-    angular.module('angular-wistia', ['ngRoute', 'ngResource', 'ui.bootstrap',
-        'blueimp.fileupload'])
+    angular.module('angular-wistia-app', ['ngRoute', 'ngResource', 'ui.bootstrap',
+        'blueimp.fileupload', 'angular-wistia'])
 
         .config(function appConfigure($routeProvider) {
             $routeProvider.when('/attachments-sample', {templateUrl: 'features/attachments/sample-page/sample-page.html'});

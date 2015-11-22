@@ -33,7 +33,7 @@
         };
     }
 
-    angular.module('angular-wistia')
+    angular.module('angular-wistia-app')
         .controller('UploadProgressDirectiveCtrl', UploadProgressController)
         .directive('awUploadProgress', createUploadProgressDirective);
 })();

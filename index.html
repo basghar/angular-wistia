@@ -9,7 +9,7 @@
 
     <link href="app.less" type="text/css" rel="stylesheet/less">
 </head>
-<body ng-app="angular-wistia">
+<body ng-app="angular-wistia-app">
 
 <!-- Livereload script for development only (stripped during dist build) -->
 <script src="http://localhost:35729/livereload.js" data-concat="false"></script>
@@ -41,13 +41,15 @@
 
 
 <!-- Main App JS -->
+<script src="src/js/wistia.module.js"></script>
+<script src="src/js/wistia.constants.js"></script>
+<script src="src/js/services/wistia-service.js"></script>
+<script src="src/js/directives/wistia-player.directive.js"></script>
+
 <script src="app.js"></script>
 <script src="features/attachments/sample-page/sample-page.js"></script>
 <script src="features/attachments/attachments-directive.js"></script>
 <script src="features/header/header-partial.js"></script>
-<script src="features/common/services/media-host/wistia-constants.js"></script>
-<script src="features/common/services/media-host/wistia-service.js"></script>
-<script src="features/player/player-directive.js"></script>
 <script src="features/player/modal-viewer/modal-viewer.js"></script>
 <script src="features/common/directives/aw-async-click/aw-async-click.js"></script>
 <script src="features/common/directives/round-progress/upload-progress-directive.js"></script>

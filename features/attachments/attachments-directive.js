@@ -69,7 +69,7 @@
         };
     }
 
-    angular.module('angular-wistia')
+    angular.module('angular-wistia-app')
         .controller('AWAttachmentsDirectiveCtrl', createAttachmentsController)
         .directive('awAttachments', createWAAttachmentsDirective);
 })();
