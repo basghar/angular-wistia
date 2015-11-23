@@ -25,11 +25,19 @@
                         name: 'wistia-media',
                         id: 'wistiaMedia',
                         url: 'directives/media'
+                    }, {
+                        name: 'wistia-media-list',
+                        id: 'wistiaMediaList',
+                        url: 'directives/media-list'
                     }]
                 }, {
                     name: 'Services',
                     type: 'toggle',
                     pages: [{
+                        name: 'wistiaAPI',
+                        id: 'wistiaAPI',
+                        url: 'services/api'
+                    }, {
                         name: 'wistiaData',
                         id: 'wistiaData',
                         url: 'services/data'
