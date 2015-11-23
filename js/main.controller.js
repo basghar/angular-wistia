@@ -1,8 +1,9 @@
 (function iife() {
     'use strict';
 
-    function MainController($scope, $timeout, $mdSidenav) {
-        var vm = this;
+    function MainController($scope, $timeout, $mdSidenav, SECTIONS) {
+        var menu = {},
+            vm = this;
 
         vm.openMenu = function openMenu() {
             $timeout(function () {
@@ -10,46 +11,44 @@
             });
         };
 
-        $scope.menu = {
-            sections: [{
-                name: 'API Reference',
-                type: 'heading',
-                children: [{
-                    name: 'Directives',
-                    type: 'toggle',
-                    pages: [{
-                        name: 'wistia-player',
-                        id: 'wistiaPlayer',
-                        url: 'directives/player'
-                    }, {
-                        name: 'wistia-media',
-                        id: 'wistiaMedia',
-                        url: 'directives/media'
-                    }, {
-                        name: 'wistia-media-list',
-                        id: 'wistiaMediaList',
-                        url: 'directives/media-list'
-                    }]
-                }, {
-                    name: 'Services',
-                    type: 'toggle',
-                    pages: [{
-                        name: 'wistiaAPI',
-                        id: 'wistiaAPI',
-                        url: 'services/api'
-                    }, {
-                        name: 'wistiaData',
-                        id: 'wistiaData',
-                        url: 'services/data'
-                    }, {
-                        name: 'wistiaStats',
-                        id: 'wistiaStats',
-                        url: 'services/stats'
-                    }]
-                }]
-            }]
+        vm.isSelected = function isSelected(page) {
+            return menu.isPageSelected(page);
         };
 
+        vm.isOpen = function isOpen(section) {
+            return menu.isSectionSelected(section);
+        };
+
+        vm.toggleOpen = function toggleOpen(section) {
+            menu.toggleSelectSection(section);
+        };
+
+        angular.extend(menu, {
+            sections: SECTIONS,
+
+            selectSection: function (section) {
+                self.openedSection = section;
+            },
+
+            toggleSelectSection: function (section) {
+                self.openedSection = (self.openedSection === section ? null : section);
+            },
+
+            isSectionSelected: function (section) {
+                return self.openedSection === section;
+            },
+
+            selectPage: function (section, page) {
+                self.currentSection = section;
+                self.currentPage = page;
+            },
+
+            isPageSelected: function (page) {
+                return self.currentPage === page;
+            }
+        });
+
+        $scope.menu = menu;
     }
 
     angular
