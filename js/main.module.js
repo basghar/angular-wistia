@@ -50,11 +50,21 @@
                     id: 'wistiaMedia',
                     url: '#/directives/media',
                     templateUrl: 'partials/wistia-media.tmpl.html'
+                }, {
+                    name: 'wistia-media-list',
+                    id: 'wistiaMediaList',
+                    url: '#/directives/media-list',
+                    templateUrl: 'partials/wistia-media-list.tmpl.html'
                 }]
             }, {
                 name: 'Services',
                 type: 'toggle',
                 pages: [{
+                    name: 'wistiaAPI',
+                    id: 'wistiaAPI',
+                    url: '#services/api',
+                    templateUrl: 'partials/wistia-api.tmpl.html'
+                }, {
                     name: 'wistiaData',
                     id: 'wistiaData',
                     url: '#services/data',
