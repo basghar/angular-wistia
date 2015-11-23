@@ -7,6 +7,18 @@
                 per_page: 10,
                 sort_direction: 1
             },
+            ProjectResource = $resource(wistiaConstants.dataUrl + '/projects/:hashedId/', {
+                hashedId: '@hashedId',
+                api_password: wistiaConstants.apiPassword
+            }, {
+                query: {
+                    method: 'GET',
+                    isArray: true,
+                    params: listParams
+                },
+                save: {method: 'PUT'},
+                copy: {method: 'POST'}
+            }),
             MediaResource = $resource(wistiaConstants.dataUrl + '/medias/:mediaHashedId/', {
                 mediaHashedId: '@hashed_id',
                 api_password: wistiaConstants.apiPassword
@@ -24,6 +36,7 @@
                 }
             }),
             wistiaService = {
+                ProjectResource: ProjectResource,
                 MediaResource: MediaResource,
                 createResource: function (attachment) {
                     return new MediaResource(attachment);
