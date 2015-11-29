@@ -2,11 +2,11 @@
     'use strict';
 
     //TODO: convert to 'controller as'
-    function createAttachmentsController($scope, $rootScope, wistiaConstants, wistiaService) {
+    function createAttachmentsController($scope, $rootScope, wistiaConstants, wistiaData) {
         var attachments;
 
         $scope.collapsed = true;
-        attachments = $scope.attachments = wistiaService.getAttachments($scope.ownerId);
+        attachments = $scope.attachments = wistiaData.getAttachments($scope.ownerId);
 
         $scope.toggleCollapse = function toggleCollapse() {
             $scope.collapsed = !$scope.collapsed;
@@ -30,7 +30,7 @@
 
         // Following event is dispatched by jquery file upload directive
         $rootScope.$on('fileuploaddone', function onFileUploadDone(e, data) {
-            var newAttachment = wistiaService.createResource(data.result);
+            var newAttachment = wistiaData.createResource(data.result);
             attachments.push(newAttachment);
             // remove files entries from jquery upload queue
             data.scope.clear(data.files);

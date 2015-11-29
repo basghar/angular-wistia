@@ -5,17 +5,17 @@ describe('attachmentsDirective', function () {
     beforeEach(module('angular-wistia'));
     beforeEach(module('templates'));
 
-    var elm, scope, rootScope, _wistiaService, mediaList;
+    var elm, scope, rootScope, _wistiaData, mediaList;
 
-    function createResourceList(mediaList, wistiaService){
+    function createResourceList(mediaList, wistiaData){
         var resourceList = [];
         mediaList.forEach(function(media){
-            resourceList.push(wistiaService.createResource(media));
+            resourceList.push(wistiaData.createResource(media));
         });
         return resourceList;
     }
 
-    beforeEach(inject(function ($rootScope, $compile, wistiaConstants, wistiaService) {
+    beforeEach(inject(function ($rootScope, $compile, wistiaConstants, wistiaData) {
         rootScope = $rootScope;
         scope = $rootScope.$new();
         scope.itemId = 'test_id';
@@ -25,19 +25,19 @@ describe('attachmentsDirective', function () {
             'viewer="showVideoPlayer(media)" upload-options="uploadOptions"></div>');
 
         $compile(elm)(scope);
-        _wistiaService = wistiaService;
+        _wistiaData = wistiaData;
         mediaList = createResourceList([{
             id: 1,
             name: "dummy.jpg",
             hashed_id: 'shitty_hash1'
-        }], _wistiaService);
-        spyOn(_wistiaService, 'getAttachments').and.returnValue(mediaList);
+        }], _wistiaData);
+        spyOn(_wistiaData, 'getAttachments').and.returnValue(mediaList);
         scope.$digest();
     }));
 
-    it('should load wistia media in the start utilizing wistiaService', function () {
+    it('should load wistia media in the start utilizing wistiaData', function () {
         var isolatedScope = elm.isolateScope();
-        expect(_wistiaService.getAttachments).toHaveBeenCalledWith(scope.itemId);
+        expect(_wistiaData.getAttachments).toHaveBeenCalledWith(scope.itemId);
         expect(isolatedScope.attachments).toBe(mediaList);
     });
 

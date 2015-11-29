@@ -1,7 +1,7 @@
 describe('wistia-service', function () {
 
     var $httpBackend,
-        wistiaService,
+        wistiaData,
         wistiaConstants,
         itemId = 'itemId1234',
         mediaList = [{
@@ -16,8 +16,8 @@ describe('wistia-service', function () {
         $httpBackend = $injector.get('$httpBackend');
     }));
 
-    beforeEach(inject(function (_wistiaService_, _wistiaConstants_) {
-        wistiaService = _wistiaService_;
+    beforeEach(inject(function (_wistiaData_, _wistiaConstants_) {
+        wistiaData = _wistiaData_;
         wistiaConstants =_wistiaConstants_;
     }));
 
@@ -30,7 +30,7 @@ describe('wistia-service', function () {
             '&sort_direction=1')
             .respond(200, mediaList);
 
-        wistiaService.getAttachments(itemId, function onSuccess(attachments) {
+        wistiaData.getAttachments(itemId, function onSuccess(attachments) {
             // need to remove Resource methods for comparison
             var result = _.map(attachments, function (a) {
                 return _.pick(a, _.keys(mediaList[0]));
@@ -48,7 +48,7 @@ describe('wistia-service', function () {
             'api_password=' + wistiaConstants.apiPassword)
             .respond(200, mediaList[0]);
 
-        wistiaService.getAttachment(mediaHashId, function onSuccess(attachment) {
+        wistiaData.getAttachment(mediaHashId, function onSuccess(attachment) {
             // need to remove Resource methods for comparison
             var result = _.pick(attachment, _.keys(mediaList[0]));
             expect(result).toEqual(mediaList[0]);
@@ -72,7 +72,7 @@ describe('wistia-service', function () {
             'api_password=' + wistiaConstants.apiPassword)
             .respond(200);
 
-        wistiaService.MediaResource.get({mediaHashedId: mediaHashId}, function onSuccess(media) {
+        wistiaData.MediaResource.get({mediaHashedId: mediaHashId}, function onSuccess(media) {
             media.$save();
             media.$delete();
         });
