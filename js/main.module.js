@@ -21,7 +21,7 @@
     }
 
     angular
-        .module('angular-wistia-pages', ['ngMaterial', 'ngRoute', 'ngResource'])
+        .module('angular-wistia-pages', ['ngMaterial', 'ngRoute', 'ngResource', 'angular-wistia'])
         .config(function ($routeProvider, $locationProvider, SECTIONS) {
             //$locationProvider.html5Mode(true);
 
@@ -29,6 +29,9 @@
             $routeProvider
                 .when('/introduction', {
                     templateUrl: 'partials/introduction.tmpl.html'
+                })
+                .when('/services/data', {
+                    templateUrl: 'partials/wistia-data.tmpl.html'
                 })
                 .otherwise({
                     redirectTo: '/introduction'
