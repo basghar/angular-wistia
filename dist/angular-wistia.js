@@ -1,3 +1,9 @@
+(function iife() {
+    'use strict';
+
+    angular.module('angular-wistia', ['ngResource']);
+})();
+
 (function wistiaConstantsIIFE() {
 
     // For demo only: The config such as one with api key/pwd should be fetched from secure http server
@@ -16,12 +22,6 @@
         };
 
     angular.module('angular-wistia').constant('wistiaConstants', wistiaConstants);
-})();
-
-(function iife() {
-    'use strict';
-
-    angular.module('angular-wistia', ['ngResource']);
 })();
 
 (function wistiaPlayerDirectiveIIFE() {
