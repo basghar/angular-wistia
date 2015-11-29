@@ -99,9 +99,9 @@
     angular.module('angular-wistia').directive('wistiaPlayer', createWistiaPlayerDirective);
 })();
 
-(function wistiaServiceIIFE() {
+(function wistiaDataServiceIIFE() {
 
-    function createWistiaService($resource, wistiaConstants) {
+    function createWistiaDataService($resource, wistiaConstants) {
 
         var listParams = {
                 page: 1,
@@ -136,7 +136,7 @@
                     url: wistiaConstants.dataUrl + '/medias/:mediaHashedId/stats'
                 }
             }),
-            wistiaService = {
+            wistiaDataService = {
                 ProjectResource: ProjectResource,
                 MediaResource: MediaResource,
                 createResource: function (attachment) {
@@ -152,7 +152,7 @@
                 }
             };
 
-        return wistiaService;
+        return wistiaDataService;
     }
 
     function createWistiaServiceInterceptor(wistiaConstants) {
@@ -193,7 +193,7 @@
 
     angular.module('angular-wistia')
         .factory('WistiaAPI', provideWistiaAPIObject) // Wistia api object placed on global ns by wistia js script
-        .factory('wistiaService', createWistiaService)
+        .factory('wistiaData', createWistiaDataService)
         .factory('wistiaServiceInterceptor', createWistiaServiceInterceptor)
         .config(['$httpProvider', function ($httpProvider) {
             $httpProvider.interceptors.push('wistiaServiceInterceptor');
