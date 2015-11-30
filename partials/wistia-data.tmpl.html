@@ -3,14 +3,16 @@
 <table ng-controller="WistiaDataPageCtrl as vm">
     <thead>
     <tr>
-        <th>Parameter</th>
-        <th>Type</th>
-        <th>Description</th>
+        <th>Name</th>
+        <th>Duration</th>
+        <th>Thumbnail</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td></td>
+    <tr ng-repeat="m in vm.medias">
+        <td>{{m.name}}</td>
+        <td>{{m.duration}}</td>
+        <td><img ng-src="{{m.thumbnail.url}}"></td>
     </tr>
     </tbody>
 </table>

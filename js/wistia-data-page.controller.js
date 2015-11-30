@@ -2,13 +2,10 @@
     'use strict';
 
     function WistiaDataPageController(wistiaData) {
-        var menu = {},
-            vm = this,
+        var vm = this,
             MediaResource = wistiaData.MediaResource;
 
-        vm.medias = MediaResource.query({}, function (medias) {
-            console.log('=================', medias);
-        });
+        vm.medias = MediaResource.query();
 
     }
 
