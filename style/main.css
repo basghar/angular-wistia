@@ -1,5 +1,5 @@
 body {
-    font-family: Roboto,'Helvetica Neue',sans-serif;
+    font-family: Roboto, 'Helvetica Neue', sans-serif;
 }
 
 a {
@@ -7,8 +7,8 @@ a {
 }
 
 ul {
-     margin: 0;
-     padding: 0;
+    margin: 0;
+    padding: 0;
 }
 
 .site-sidenav,
@@ -67,7 +67,7 @@ ul {
     border-bottom: 1px solid #BFBFBF;
 }
 
-.md-icon-button .fa{
+.md-icon-button .fa {
     font-size: 22px;
 }
 
@@ -75,6 +75,7 @@ ul {
 .docs-menu .md-button:focus {
     background: #267ED5 !important;
 }
+
 .docs-menu .md-button md-icon {
     color: white;
 }
@@ -131,6 +132,7 @@ docs-menu, .docs-menu ul {
     transition: transform 0.3s ease-in-out;
     -webkit-transition: -webkit-transform 0.3s ease-in-out;
 }
+
 .md-button-toggle .md-toggle-icon.toggled {
     transform: rotate(0deg);
     -webkit-transform: rotate(0deg);
@@ -161,11 +163,15 @@ a {
     transition: border-bottom 0.35s;
 }
 
-.disclaimer{
+.disclaimer {
     color: #b5b5b5;
 }
 
 .disclaimer strong {
     border-bottom: 1px dotted #b1b1b1;
     text-decoration: none;
+}
+
+md-icon.fa {
+    font-size: 24px;
 }
