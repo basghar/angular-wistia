@@ -1,56 +1,68 @@
 <h2>wistiaData server</h2>
 
 <div ng-controller="WistiaDataPageCtrl as vm">
-    <h3>Projects</h3>
-    <table>
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Description</th>
-            <th>Number of Media</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="p in vm.projects">
-            <td>{{p.name}}</td>
-            <td>{{p.description}}</td>
-            <td>{{p.mediaCount}}</td>
-            <td>
-                <md-button class="md-fab md-primary md-mini">
+    <section class="demo-block">
+        <md-toolbar class="demo-toolbar md-primary" aria-hidden="false">
+            <div class="md-toolbar-tools">
+                <h3>Projects</h3>
+                <span flex="" class="flex"></span>
+                <button class="md-icon-button md-button md-ink-ripple" type="button" ng-transclude="" aria-label="View Source" ng-class="{ active: demoCtrl.$showSource }" ng-click="demoCtrl.$showSource = !demoCtrl.$showSource" style="">
                     <md-icon md-font-icon="fa-pencil-square-o" class="fa"></md-icon>
-                </md-button>
-                <md-button class="md-fab md-mini">
-                    <md-icon md-font-icon="fa-times" class="fa"></md-icon>
-                </md-button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
-    <h3>Medias</h3>
-    <table>
-        <thead>
-        <tr>
-            <th>Name</th>
-            <th>Duration</th>
-            <th>Thumbnail</th>
-            <th>Actions</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr ng-repeat="m in vm.medias">
-            <td>{{m.name}}</td>
-            <td>{{m.duration}}</td>
-            <td><img ng-src="{{m.thumbnail.url}}"></td>
-            <td>
-                <md-button class="md-fab md-primary md-mini">
-                    <md-icon md-font-icon="fa-pencil-square-o" class="fa"></md-icon>
-                </md-button>
-                <md-button class="md-fab md-mini">
-                    <md-icon md-font-icon="fa-times" class="fa"></md-icon>
-                </md-button>
-            </td>
-        </tr>
-        </tbody>
-    </table>
+                </button>
+            </div>
+        </md-toolbar>
+        <table>
+            <thead>
+            <tr>
+                <th style="width: 150px;">Name</th>
+                <th>Description</th>
+                <th style="width: 94px;">Media Count</th>
+                <th style="width: 116px;">Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="p in vm.projects">
+                <td>{{p.name}}</td>
+                <td>{{p.description}}</td>
+                <td>{{p.mediaCount}}</td>
+                <td>
+                    <md-button class="md-fab md-primary md-mini">
+                        <md-icon md-font-icon="fa-pencil-square-o" class="fa"></md-icon>
+                    </md-button>
+                    <md-button class="md-fab md-mini">
+                        <md-icon md-font-icon="fa-times" class="fa"></md-icon>
+                    </md-button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+        <h3>Medias</h3>
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Duration</th>
+                <th>Thumbnail</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="m in vm.medias">
+                <td>{{m.name}}</td>
+                <td>{{m.duration}}</td>
+                <td><img ng-src="{{m.thumbnail.url}}"></td>
+                <td>
+                    <md-button class="md-fab md-primary md-mini">
+                        <md-icon md-font-icon="fa-pencil-square-o" class="fa"></md-icon>
+                    </md-button>
+                    <md-button class="md-fab md-mini">
+                        <md-icon md-font-icon="fa-times" class="fa"></md-icon>
+                    </md-button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </section>
+
 </div>

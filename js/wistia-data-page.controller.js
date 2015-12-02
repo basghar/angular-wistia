@@ -7,9 +7,7 @@
             ProjectResource = wistiaData.ProjectResource;
 
         vm.medias = MediaResource.query();
-        vm.projects = ProjectResource.query({}, function(projects){
-            console.log(projects);
-        });
+        vm.projects = ProjectResource.query();
     }
 
     angular

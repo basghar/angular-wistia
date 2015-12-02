@@ -175,3 +175,7 @@ a {
 md-icon.fa {
     font-size: 24px;
 }
+
+table {
+    width: 100%;
+}
